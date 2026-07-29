@@ -3,7 +3,15 @@
 Static public website for an independent, source-referenced evidence programme on the
 River Thames between Teddington Weir and Richmond.
 
-**Live site:** _(filled in once the Azure Static Web App is created)_
+**Live site:** <https://jolly-flower-06c523503.7.azurestaticapps.net>
+
+| | |
+|---|---|
+| Azure resource | `swa-teddington-thames-evidence` |
+| Resource group | `rg-teddington-rbl-dev` (West Europe) |
+| Subscription | Pay-As-You-Go Dev/Test |
+| Tier | Free — £0 |
+| Deploys from | `main`, via `.github/workflows/azure-static-web-apps-jolly-flower-06c523503.yml` |
 
 Hosted on **Azure Static Web Apps (Free tier)**. Every push to `main` redeploys the site
 automatically via GitHub Actions. There is no build step — the files in this repository are
@@ -94,6 +102,13 @@ If a run fails, read the log:
 ```bash
 gh run view --log-failed
 ```
+
+**One gotcha, already fixed but worth knowing.** `app_location` in the workflow must be `"/"`.
+If you ever re-run `az staticwebapp create` from Git Bash on Windows, MSYS silently rewrites a
+`"/"` argument into `C:/Program Files/Git/` before the CLI sees it, and Azure writes that
+literal path into the workflow — the deploy then fails with *"App Directory Location is
+invalid"*. Either edit the workflow back to `"/"` by hand, or prefix the command with
+`MSYS_NO_PATHCONV=1`. Running `az` from PowerShell avoids it entirely.
 
 You can also see deployment history in the Azure Portal under the Static Web App resource →
 **Environments**, or on GitHub under the **Actions** tab.
