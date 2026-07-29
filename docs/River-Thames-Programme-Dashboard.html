@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River Thames Evidence &amp; Representation Programme — Teddington to Richmond</title>
+<style>
+  :root{
+    --navy:#0b2545; --navy2:#13315c; --teal:#0f6f7a; --teal-d:#0b565f;
+    --river:#2a6f97; --ink:#1a2733; --body:#33424f; --muted:#5c6b78;
+    --line:#dce4ec; --line2:#e9eef3; --bg:#f5f8fa; --card:#ffffff;
+    --bad:#b3261e; --bad-bg:#fbe9e7; --amber:#8a5a00; --amber-bg:#fdf3e0;
+    --good:#1e7d3a; --good-bg:#e7f4ec; --info:#1d5e8c; --info-bg:#e8f1f8;
+    --shadow:0 1px 2px rgba(11,37,69,.06),0 3px 10px rgba(11,37,69,.05);
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--body);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--river); text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3,h4{color:var(--navy); line-height:1.25; margin:0 0 .5em}
+  h2{font-size:1.5rem; letter-spacing:-.01em}
+  h3{font-size:1.15rem; margin-top:1.4em}
+  h4{font-size:1rem; color:var(--navy2)}
+  p{margin:0 0 1em}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
+
+  /* Header */
+  header.top{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal-d) 100%); color:#eaf1f6; padding:38px 0 30px}
+  header.top .eyebrow{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:#8fb8c9; margin-bottom:10px}
+  header.top h1{color:#fff; font-size:2.05rem; letter-spacing:-.02em; margin-bottom:.35em; max-width:22ch}
+  header.top .sub{color:#cfe0ea; font-size:1.05rem; max-width:70ch; margin-bottom:18px}
+  header.top .meta{display:flex; flex-wrap:wrap; gap:8px 10px; font-size:.82rem}
+  header.top .meta span{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); padding:4px 11px; border-radius:999px; color:#eaf1f6}
+
+  /* Nav */
+  nav.jump{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); box-shadow:0 1px 6px rgba(11,37,69,.05)}
+  nav.jump .wrap{display:flex; gap:2px; overflow-x:auto; padding:8px 20px; scrollbar-width:thin}
+  nav.jump a{white-space:nowrap; font-size:.83rem; font-weight:600; color:var(--navy2); padding:7px 12px; border-radius:8px}
+  nav.jump a:hover{background:var(--info-bg); text-decoration:none}
+
+  main{padding:30px 0 60px}
+  section{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:26px 28px; margin:0 0 22px; scroll-margin-top:64px}
+  section>h2{display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:2px solid var(--line2); margin-bottom:16px}
+  section>h2 .n{font-size:.8rem; font-weight:700; color:#fff; background:var(--teal); min-width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border-radius:7px}
+  .lead{font-size:1.05rem; color:var(--ink)}
+
+  /* Stat tiles */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:12px; margin:6px 0 4px}
+  .tile{border:1px solid var(--line); border-radius:10px; padding:14px 15px; background:linear-gradient(180deg,#fff,#fbfdfe)}
+  .tile .v{font-size:1.5rem; font-weight:750; color:var(--navy); line-height:1.1; letter-spacing:-.02em}
+  .tile .l{font-size:.8rem; color:var(--muted); margin-top:4px}
+  .tile.bad .v{color:var(--bad)} .tile.good .v{color:var(--good)} .tile.amber .v{color:var(--amber)}
+
+  /* Callouts */
+  .call{border-left:4px solid var(--info); background:var(--info-bg); padding:13px 16px; border-radius:0 10px 10px 0; margin:14px 0}
+  .call.warn{border-color:var(--amber); background:var(--amber-bg)}
+  .call.bad{border-color:var(--bad); background:var(--bad-bg)}
+  .call.good{border-color:var(--good); background:var(--good-bg)}
+  .call p:last-child{margin-bottom:0}
+  .call .t{font-weight:700; color:var(--navy); display:block; margin-bottom:3px}
+
+  /* Tables */
+  .tbl{width:100%; border-collapse:collapse; margin:10px 0 6px; font-size:.9rem}
+  .tbl th,.tbl td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line2); vertical-align:top}
+  .tbl thead th{background:#f1f6f9; color:var(--navy2); font-size:.76rem; text-transform:uppercase; letter-spacing:.04em; border-bottom:2px solid var(--line)}
+  .tbl tbody tr:hover{background:#fafcfd}
+  .tbl td.num{font-variant-numeric:tabular-nums; white-space:nowrap}
+  .scroll{overflow-x:auto}
+
+  /* Badges */
+  .badge{display:inline-block; font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:999px; border:1px solid transparent; white-space:nowrap}
+  .b-bad{background:var(--bad-bg); color:var(--bad); border-color:#f2c6c1}
+  .b-amber{background:var(--amber-bg); color:var(--amber); border-color:#eed7ad}
+  .b-good{background:var(--good-bg); color:var(--good); border-color:#bfe0c9}
+  .b-info{background:var(--info-bg); color:var(--info); border-color:#c4dcee}
+  .b-open{background:#eee9f6; color:#5b3f9a; border-color:#d5c9ee}
+
+  /* Workstream cards */
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+  .ws{border:1px solid var(--line); border-radius:11px; padding:15px 16px; background:#fff}
+  .ws h4{margin:0 0 6px; display:flex; align-items:center; gap:8px}
+  .ws .obj{font-size:.9rem; margin-bottom:9px}
+  .ws .row{font-size:.8rem; color:var(--muted); margin-top:6px}
+  .ws .row b{color:var(--navy2); font-weight:600}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+  .d-live{background:var(--good)} .d-prog{background:var(--amber)} .d-plan{background:var(--info)}
+
+  /* Bar charts (CSS) */
+  .chart{margin:14px 0 6px}
+  .bar-row{display:grid; grid-template-columns:52px 1fr 62px; align-items:center; gap:10px; margin:7px 0; font-size:.85rem}
+  .bar-track{background:#eef3f6; border-radius:6px; height:22px; overflow:hidden; border:1px solid var(--line2)}
+  .bar-fill{height:100%; border-radius:6px 0 0 6px; background:linear-gradient(90deg,var(--river),#3f86ae); display:flex; align-items:center}
+  .bar-fill.hot{background:linear-gradient(90deg,#c0392b,#e05a48)}
+  .bar-row .yr{font-weight:700; color:var(--navy2)} .bar-row .val{text-align:right; font-variant-numeric:tabular-nums; color:var(--body)}
+  .cap{font-size:.78rem; color:var(--muted); margin-top:6px}
+
+  /* Petition meters */
+  .pet{border:1px solid var(--line); border-radius:11px; padding:15px 16px; margin:12px 0; background:#fff}
+  .pet .ph{display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap}
+  .pet .title{font-weight:700; color:var(--navy); font-size:.98rem; max-width:60ch}
+  .pet .count{font-size:1.25rem; font-weight:750; color:var(--teal); font-variant-numeric:tabular-nums; white-space:nowrap}
+  .meter{position:relative; height:26px; background:#eef3f6; border-radius:7px; margin:12px 0 6px; overflow:hidden; border:1px solid var(--line2)}
+  .meter .fill{position:absolute; left:0; top:0; bottom:0; background:linear-gradient(90deg,var(--teal),#1f97a6); border-radius:7px}
+  .meter .thr{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--navy)}
+  .meter .thr span{position:absolute; top:-18px; transform:translateX(-50%); font-size:.66rem; font-weight:700; color:var(--navy); white-space:nowrap}
+  .petgrid{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+  .qr{flex:none; width:104px; text-align:center}
+  .qr img{width:104px; height:104px; border:1px solid var(--line); border-radius:8px; background:#fff; padding:4px}
+  .qr span{display:block; font-size:.68rem; color:var(--muted); margin-top:4px}
+  .pet .body{flex:1; min-width:240px}
+
+  /* Draft comms */
+  .draft{border:1px solid var(--line); border-radius:11px; margin:14px 0; overflow:hidden}
+  .draft .dh{background:#f1f6f9; padding:11px 15px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center}
+  .draft .dh b{color:var(--navy)}
+  .letter{padding:16px 18px; font-family:"Iowan Old Style",Georgia,"Times New Roman",serif; font-size:.92rem; color:#26323d; background:#fffdf9}
+  .letter p{margin:0 0 .8em}
+  .kv{font-size:.82rem; color:var(--muted)}
+  ul.tight{margin:.2em 0 1em; padding-left:1.2em} ul.tight li{margin:.28em 0}
+
+  .foot{color:var(--muted); font-size:.82rem; text-align:center; padding:26px 20px 0}
+  .src{font-size:.84rem} .src li{margin:.3em 0}
+  .anchor-top{font-size:.78rem; color:var(--muted)}
+  details.srcgrp{margin:8px 0; border:1px solid var(--line); border-radius:9px; overflow:hidden}
+  details.srcgrp>summary{cursor:pointer; padding:10px 14px; background:#f6f9fb; font-weight:700; color:var(--navy2); font-size:.9rem}
+  details.srcgrp>div{padding:10px 16px}
+  @media print{
+    nav.jump{display:none} body{background:#fff; font-size:12px}
+    section{box-shadow:none; border:1px solid #ccc; break-inside:avoid; page-break-inside:avoid}
+    header.top{background:var(--navy)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Evidence-led representation · River Thames · Teddington · Ham · Kingston · Richmond · Petersham</div>
+    <h1>River Thames Evidence &amp; Representation Programme</h1>
+    <p class="sub">A structured, source-referenced case on the ecological health, water quality, public use and official monitoring of the River Thames between Teddington Weir and Richmond — and what needs to be done about it.</p>
+    <div class="meta">
+      <span>Compiled for Duncan Lawrence</span>
+      <span>Working document · v1 · 28 July 2026</span>
+      <span>Two jobs: prove the case → agree the asks</span>
+      <span>Every figure carries a source</span>
+    </div>
+  </div>
+</header>
+
+<nav class="jump"><div class="wrap">
+  <a href="#overview">Overview</a>
+  <a href="#programme">Programme of work</a>
+  <a href="#case">The evidence</a>
+  <a href="#accountability">Thames Water accountability</a>
+  <a href="#data">Who holds the data</a>
+  <a href="#contacts">Stakeholders &amp; contacts</a>
+  <a href="#tracker">Correspondence tracker</a>
+  <a href="#comms">Draft communications</a>
+  <a href="#petitions">Petitions &amp; awareness</a>
+  <a href="#gaps">Evidence gaps</a>
+  <a href="#sources">Sources</a>
+</div></nav>
+
+<main><div class="wrap">
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section id="overview">
+    <h2><span class="n">1</span> Overview — the case in brief</h2>
+    <p class="lead">This programme brings together, in one place, the evidence and the actions needed to hold decision-makers to a proper, evidence-based standard for the River Thames between Teddington and Richmond. It exists to do two things, in order: <b>prove what we are saying</b> with official, sourced data, and then <b>secure agreement on the asks</b> — the specific things that need doing, and by whom.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="v">15 May 2026</div><div class="l">River Thames at Ham &amp; Kingston became London's first designated river bathing water</div></div>
+      <div class="tile bad"><div class="v">523</div><div class="l">Thames Water pollution incidents in 2024 — up 33% on 2023</div></div>
+      <div class="tile bad"><div class="v">1★</div><div class="l">EA environmental performance rating 2024 — worst of nine companies</div></div>
+      <div class="tile bad"><div class="v">£122.7m</div><div class="l">Ofwat's record 2025 penalty (sewage + unjustified dividends)</div></div>
+      <div class="tile amber"><div class="v">~471 hrs</div><div class="l">Mogden storm-sewage spill hours in 2024 (to be verified vs raw EA data)</div></div>
+      <div class="tile bad"><div class="v">Critically<br>Endangered</div><div class="l">European eel — a Thames migratory species (IUCN)</div></div>
+    </div>
+
+    <h3>What the evidence shows</h3>
+    <p>The stretch of river in question spans two officially classified water bodies. The non-tidal reach at Kingston (<b>Thames, Egham to Teddington</b>) holds an <span class="badge b-bad">ecological status: Poor</span> classification; the tidal reach through Ham, Richmond and Isleworth (<b>Thames Middle / Upper, a transitional water body</b>) is <span class="badge b-amber">Moderate</span>. Both <b>fail</b> chemical status. The single largest local pressure is sewage: <b>Mogden Sewage Treatment Works</b> at Isleworth — the second-largest works in the country, serving ~2 million people — discharges continuous treated effluent plus storm sewage into the tidal Thames just downstream of Richmond, and London's new "super sewer" (the Thames Tideway Tunnel) <b>does not serve this reach</b> — it begins downstream at Acton.</p>
+
+    <p>Against that backdrop, Thames Water is proposing the <b>Teddington Direct River Abstraction (TDRA)</b> scheme — taking up to 75 million litres a day out of the river above Teddington Weir during droughts and replacing it with tertiary-treated effluent from Mogden, discharged into the same reach now designated for public swimming. The company itself is rated the worst environmental performer of the nine water companies, is carrying roughly £20&nbsp;billion of debt, and has been penalised for paying executive bonuses and unjustified dividends while its pollution record deteriorated.</p>
+
+    <div class="call good">
+      <span class="t">The one-line case</span>
+      <p>A river reach that is officially <b>Poor-to-Moderate and failing on chemicals</b>, under sustained <b>sewage pressure</b> that the flagship "super sewer" does not relieve, is simultaneously being <b>promoted for public bathing</b> and <b>targeted for a new effluent-and-abstraction scheme</b> — by a company that is the sector's <b>worst-rated environmental performer</b>. Decisions of this consequence must rest on current, independent, decision-grade evidence. This programme assembles that evidence and sets out the asks.</p>
+    </div>
+
+    <h3>What we are asking for (the asks — to be refined with partners)</h3>
+    <ul class="tight">
+      <li><b>Full disclosure of the evidence base</b> — raw survey data, methods and known gaps — from the Environment Agency (via the live EIR request) and coordination with ZSL's <i>State of the Thames</i> programme, so decisions rest on data, not summaries.</li>
+      <li><b>Honest public information at the bathing site</b> — clear signage and QR codes on water quality, storm-overflow status and safety, so "designated bathing water" is not mistaken for "always safe."</li>
+      <li><b>A precautionary, independently reviewed decision on TDRA</b> — no discharge of recycled effluent into a designated bathing and ecologically sensitive reach without robust, independent scientific scrutiny.</li>
+      <li><b>Accountability for Thames Water</b> — investment in storm capacity to a standard at least matching the updated EU requirements, not fines treated as a cost of doing business, and no rewards for executives while performance fails.</li>
+      <li><b>Public awareness</b> — get the petitions that can actually change things in front of the people who use the river, so they reach the thresholds for a government response and a parliamentary debate.</li>
+    </ul>
+    <p class="anchor-top">Each ask is backed by the evidence in sections 3–5, the data-ownership map in section 5, and the live actions in sections 7–9.</p>
+  </section>
+
+  <!-- ===================== PROGRAMME OF WORK ===================== -->
+  <section id="programme">
+    <h2><span class="n">2</span> Programme of work</h2>
+    <p>The work is organised into seven workstreams. Each has an objective, the bodies that own or influence it, a status, and the immediate next action. Together they run in parallel; the correspondence tracker (section 7) records live cases against them.</p>
+    <div class="grid2">
+
+      <div class="ws">
+        <h4><span class="dot d-live"></span> A · Evidence &amp; data disclosure</h4>
+        <div class="obj">Obtain the raw, decision-grade data (surveys, methods, gaps) and establish who is accountable for interpreting it.</div>
+        <div class="row"><b>Lead/holders:</b> Environment Agency; ZSL; universities</div>
+        <div class="row"><b>Status:</b> <span class="badge b-good">Live</span> — EIR2026/31287 open</div>
+        <div class="row"><b>Next:</b> Reply to Peter Gray (EA) today; contact ZSL to coordinate</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-prog"></span> B · Water quality &amp; sewage</h4>
+        <div class="obj">Evidence the sewage pressure on the reach (Mogden, storm overflows) and press for capacity to a proper standard.</div>
+        <div class="row"><b>Lead/holders:</b> Environment Agency; Thames Water; Ofwat</div>
+        <div class="row"><b>Status:</b> <span class="badge b-amber">In progress</span></div>
+        <div class="row"><b>Next:</b> Verify Mogden EDM figures &amp; obtain storm-tank capacity</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-plan"></span> C · Teddington abstraction (TDRA)</h4>
+        <div class="obj">Ensure no effluent-for-abstraction scheme proceeds in this reach without independent scientific review.</div>
+        <div class="row"><b>Lead/holders:</b> Thames Water; Planning Inspectorate; EA; Ofwat</div>
+        <div class="row"><b>Status:</b> <span class="badge b-info">Planning</span> — DCO expected early 2027</div>
+        <div class="row"><b>Next:</b> Register as interested party; align with SOLAR &amp; MP</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-prog"></span> D · Bathing safety &amp; public information</h4>
+        <div class="obj">Clear, lawful signage &amp; QR codes at the bathing site so users can check water quality and risk before entering.</div>
+        <div class="row"><b>Lead/holders:</b> Richmond &amp; Kingston Councils; EA; PLA</div>
+        <div class="row"><b>Status:</b> <span class="badge b-amber">In progress</span> — Case MW68997</div>
+        <div class="row"><b>Next:</b> Write to Cllr Julia Neden-Watts (draft ready, section 8)</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-prog"></span> E · Biodiversity — fish, eels, birds, habitat</h4>
+        <div class="obj">Assemble species and habitat evidence (eel, smelt, waterbirds, mussels, riparian habitat) for the reach.</div>
+        <div class="row"><b>Lead/holders:</b> EA; ZSL; BTO/WeBS; GiGL; Natural England</div>
+        <div class="row"><b>Status:</b> <span class="badge b-amber">In progress</span></div>
+        <div class="row"><b>Next:</b> Request WeBS sector data; ZSL eel/smelt records</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-live"></span> F · Representations &amp; correspondence</h4>
+        <div class="obj">Coordinate credible, evidence-led approaches to each body and keep an auditable record of every case.</div>
+        <div class="row"><b>Lead/holders:</b> Duncan &amp; partners; MP; councillors</div>
+        <div class="row"><b>Status:</b> <span class="badge b-good">Live</span></div>
+        <div class="row"><b>Next:</b> Maintain tracker (section 7); issue drafts (section 8)</div>
+      </div>
+
+      <div class="ws">
+        <h4><span class="dot d-live"></span> G · Public awareness &amp; petitions</h4>
+        <div class="obj">Get the petitions that carry real weight in front of river users so they reach response/debate thresholds.</div>
+        <div class="row"><b>Lead/holders:</b> Save Our Lands and River; Duncan; river groups</div>
+        <div class="row"><b>Status:</b> <span class="badge b-good">Live</span> — petition 763721 just passed 10,000</div>
+        <div class="row"><b>Next:</b> Deploy petitions panel &amp; QR flyer (section 9)</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== THE EVIDENCE ===================== -->
+  <section id="case">
+    <h2><span class="n">3</span> The evidence — proving what we are saying</h2>
+    <p>This section is the substantive evidence base, organised by theme. Everything here is drawn from official or peer-reviewed sources listed in section 11. Where a figure still needs confirming against primary data, it is flagged <span class="badge b-amber">verify</span>.</p>
+
+    <h3>3.1 · The bathing-water designation</h3>
+    <p>On <b>15 May 2026</b> the Thames at <b>Ham and Kingston</b> — sampling point on Lower Ham Road, Kingston — became <b>London's first designated river bathing water</b>, following an application by the Ham &amp; Kingston Bathers and a Defra consultation that drew roughly 500 responses in support to 2 against. (It was <i>proposed</i> in February 2026; the widely repeated "designated in February" is incorrect — the legal designation took effect on 15 May.) Designation obliges the Environment Agency to sample through the season (15 May–30 September) for <b>E. coli</b> and <b>intestinal enterococci</b> and to classify the site.</p>
+    <div class="call warn">
+      <span class="t">The critical caveat for public safety</span>
+      <p>Designation is <b>not</b> a certificate of safety. A full Excellent/Good/Sufficient/Poor classification needs about <b>four seasons of data — so not before the end of 2029</b>. Until then the water quality is officially "currently unknown," and bacterial levels can spike sharply after rain and storm-overflow events. This is exactly why on-site public information matters (workstream D).</p>
+    </div>
+
+    <h3>3.2 · Official water-quality status (Water Framework Directive)</h3>
+    <p>The reach spans two classified water bodies. Teddington Lock is the tidal limit, so the classifications — and the assessment methods — change here.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Water body</th><th>Type</th><th>Ecological</th><th>Chemical</th><th>Main reasons for not achieving good</th></tr></thead>
+      <tbody>
+        <tr><td><b>Thames (Egham to Teddington)</b><br><span class="kv">GB106039023232 · covers Kingston</span></td><td>River · Heavily Modified</td><td><span class="badge b-bad">Poor</span> (2022)</td><td><span class="badge b-bad">Fail</span></td><td>Continuous sewage discharge (phosphate, temperature); physical modification; agriculture; urban runoff; low flow</td></tr>
+        <tr><td><b>Thames Middle / Upper (tidal)</b><br><span class="kv">transitional water body · Ham→Richmond→Isleworth</span></td><td>Transitional (estuarine) · Heavily Modified</td><td><span class="badge b-amber">Moderate</span> (2022)</td><td><span class="badge b-bad">Fail</span></td><td>Zinc (specific pollutant); hydromorphology / mitigation measures; sewage; surface-water abstraction</td></tr>
+      </tbody>
+    </table></div>
+    <div class="call">
+      <span class="t">A nuance the Environment Agency's own tideway ecologist raised with you</span>
+      <p>Freshwater scoring indices, applied to naturally brackish tidal water, produce artificially low scores. The EA already pre-empts much of this for the tidal body by assessing it with <b>estuarine tools</b> — which is why its <b>fish and phytoplankton both score “Good,”</b> and the Moderate result is driven by zinc and physical modification rather than biology. The upstream Egham-to-Teddington reach is genuinely non-tidal freshwater, so freshwater indices are appropriate there — and it still scores <b>Poor</b>. Both readings matter, and both should be cited with this interpretation attached.</p>
+    </div>
+
+    <h3>3.3 · Sewage and storm overflows — Mogden</h3>
+    <p><b>Mogden Sewage Treatment Works</b> (Isleworth) is the second-largest in the UK, serving a population equivalent of ~1.9–2.1&nbsp;million. It discharges continuous treated effluent plus intermittent storm sewage into the tidal Thames just downstream of Richmond. Storm-spill duration has risen despite a 2011–13 extension that added ~50% process capacity:</p>
+    <div class="chart">
+      <div class="bar-row"><span class="yr">2021</span><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><span class="val">438 hrs</span></div>
+      <div class="bar-row"><span class="yr">2022</span><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><span class="val">164 hrs</span></div>
+      <div class="bar-row"><span class="yr">2023</span><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div><span class="val">221 hrs</span></div>
+      <div class="bar-row"><span class="yr">2024</span><div class="bar-track"><div class="bar-fill hot" style="width:100%"></div></div><span class="val">471 hrs</span></div>
+      <div class="cap">Mogden storm-discharge hours per year (Event Duration Monitoring). Source: floodmapper.co.uk republishing EA annual returns — <span class="badge b-amber">verify</span> against the raw EA dataset before formal citation. EDM records duration only, not volume.</div>
+    </div>
+    <p>Volumes in extreme events are very large: on <b>3–4 October 2020</b>, Mogden released <b>more than two billion litres</b> over roughly 48 hours, prompting an Environment Agency investigation; the then-CEO conceded the eight storm tanks were "unable to cope." Crucially, the <b>Thames Tideway Tunnel</b> ("super sewer," fully operational February 2025) runs from <b>Acton to Abbey Mills</b> — it protects central and east London and <b>does nothing for the Teddington–Richmond reach</b>. Mogden is not connected to it.</p>
+
+    <h3>3.4 · The Teddington Direct River Abstraction (TDRA) scheme</h3>
+    <p>Thames Water proposes, for drought resilience, to abstract up to <b>75 million litres/day</b> from the Thames about <b>350&nbsp;m above Teddington Weir</b>, and to offset that by discharging <b>tertiary-treated final effluent from Mogden</b> — piped ~4.5&nbsp;km — into the river about <b>180&nbsp;m above the weir</b>. It is a Nationally Significant Infrastructure Project; a Development Consent Order application is expected in <b>early 2027</b> (slipped from 2026), and Ofwat's RAPID process allowed £22.6m of development funding in July 2025 while keeping a Beckton alternative in reserve.</p>
+    <div class="call bad">
+      <span class="t">Why this is the fault line</span>
+      <p>The scheme would put recycled effluent into the very reach that has just been <b>designated for public swimming</b> and that is the <b>fastest-warming part of the tidal Thames</b>, on the <b>eel migration route</b>, and within the <b>smelt spawning zone</b>. Objectors — Save Our Lands and River, Munira Wilson MP and Richmond Council (with Kingston cautious) — raise dissolved-oxygen crashes at low summer flows, warmer effluent, nutrients, and contaminants that tertiary treatment does not remove (pharmaceuticals, microplastics, PFAS "forever chemicals"). Thames Water frames it as drought resilience with regulated safeguards. The point for this programme: a decision of this weight demands <b>independent</b> scientific review, not the promoter's own assessment alone.</p>
+    </div>
+
+    <h3>3.5 · The ecology — ZSL's <i>State of the Thames</i></h3>
+    <p>ZSL (Zoological Society of London) published the first <i>State of the Thames</i> in 2021 and an updated edition on <b>19 January 2026</b> (21 indicators, data to end-2024). The tidal Thames is a genuine recovery story — dissolved oxygen, phosphorus and toxic metals have improved, waders and grey seals are up — but the report warns the recovery is fragile. For <i>this</i> reach the load-bearing findings are:</p>
+    <ul class="tight">
+      <li><b>Warming fastest here.</b> The <b>upper</b> tidal Thames is warming at roughly <b>0.19&nbsp;°C/year</b> — the fastest of any reach — directly relevant to Teddington–Richmond and to any warm-effluent discharge.</li>
+      <li><b>European eel — Critically Endangered.</b> Recruitment is down ~90–95% since the 1980s; ZSL's citizen-science eel project monitors passes at weirs including on the Hogsmill at Kingston.</li>
+      <li><b>European smelt</b>, a pollution-sensitive indicator, spawns in the low-salinity upper tideway and is highly exposed to warming, salinity change and abstraction.</li>
+      <li><b>Invasive quagga mussel</b> was first recorded in the Thames at <b>Richmond in 2014</b>, threatening rare native mussels; ZSL runs annual riverbed surveys at Richmond Lock.</li>
+      <li><b>Harbour seals declining</b> since ~2018; <b>sea level rising</b> ~5&nbsp;mm/year at Tower Pier; <b>nitrate rising</b> even as phosphate falls.</li>
+    </ul>
+    <p class="kv">Data and contacts for coordination: ZSL marine &amp; freshwater team — marineandfreshwater@zsl.org. (Note: the sharks recorded in the tidal Thames are tope, starry smooth-hound and spurdog; ZSL's angel-shark work is in Wales and the Canaries, not the Thames — worth getting right.)</p>
+  </section>
+
+  <!-- ===================== ACCOUNTABILITY ===================== -->
+  <section id="accountability">
+    <h2><span class="n">4</span> Thames Water accountability</h2>
+    <p>Your core argument is that Thames Water is not meeting its obligations to the public or the environment — that it pays comparatively cheap fines instead of fixing infrastructure, and rewards executives while pollution worsens. The record below supports that argument with sourced figures. It is presented straight, with the company's own defence set out, so it survives scrutiny.</p>
+
+    <h3>4.1 · A sustained record of pollution convictions</h3>
+    <p>These are proven criminal convictions (guilty pleas / convictions in the Crown Court), all for sewage-pollution offences:</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Sentenced</th><th class="num">Fine</th><th>Incident</th></tr></thead>
+      <tbody>
+        <tr><td class="num">Mar 2017</td><td class="num"><b>£20.3m</b></td><td>Record fine at the time — 1.9&nbsp;billion litres of untreated sewage into the Thames &amp; tributaries, 2013–14. Judge: “It should not be cheaper to offend than to take appropriate precautions.”</td></tr>
+        <tr><td class="num">Dec 2018</td><td class="num">£2m</td><td>2015 discharge near Milton-under-Wychwood; 1,000+ pump-fault alarms ignored.</td></tr>
+        <tr><td class="num">Mar 2021</td><td class="num">£2.3m</td><td>2016 unpermitted effluent into a Henley stream; 1,000+ fish killed.</td></tr>
+        <tr><td class="num">Nov 2021</td><td class="num">£4m</td><td>2016 raw sewage into Hinksey Stream, Oxford; an emergency overflow had not been inspected for 10 years.</td></tr>
+        <tr><td class="num">Jul 2023</td><td class="num">£3.33m</td><td>2017 raw sewage near Gatwick; 1,400+ dead fish; judge found a “deliberate attempt” to mislead the EA.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="kv">By 2021 the BBC reported Thames Water had faced £24.4m in fines for comparable offences since 2017. Several further Environment Agency criminal investigations are open (see 4.2).</p>
+
+    <h3>4.2 · Performance is getting worse, not better</h3>
+    <p>Pollution incidents rose sharply in 2024 — the opposite of what escalating fines were meant to achieve:</p>
+    <div class="chart">
+      <div class="bar-row"><span class="yr">2021</span><div class="bar-track"><div class="bar-fill" style="width:58%"></div></div><span class="val">304</span></div>
+      <div class="bar-row"><span class="yr">2022</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div><span class="val">397</span></div>
+      <div class="bar-row"><span class="yr">2023</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="val">393</span></div>
+      <div class="bar-row"><span class="yr">2024</span><div class="bar-track"><div class="bar-fill hot" style="width:100%"></div></div><span class="val">523</span></div>
+      <div class="cap">Thames Water total pollution incidents per year (EA). 2024: 523 total, 33 serious (Cat 1–2) — up 135% on 2023, and 44% of the entire sector's serious incidents. Source: EA Pollution Incident Report 2016–2024.</div>
+    </div>
+    <div class="tiles">
+      <div class="tile bad"><div class="v">1★ of 5</div><div class="l">EA Environmental Performance rating for 2024 — down from 2★, the only company rated 1★ (worst of nine)</div></div>
+      <div class="tile bad"><div class="v">31 of 81</div><div class="l">EA criminal investigations opened since ~mid-2024 that involve Thames Water — the most of any company (open, not convictions)</div></div>
+      <div class="tile amber"><div class="v">&gt;2bn L</div><div class="l">Single Mogden discharge, Oct 2020 — triggered an EA investigation</div></div>
+    </div>
+
+    <h3>4.3 · The record regulatory penalty</h3>
+    <p>In <b>May 2025</b> Ofwat imposed its <b>largest-ever penalty — £122.7m</b> on Thames Water, from two investigations: <b>£104.5m</b> for wastewater and storm-overflow failings (three-quarters of its storm overflows were found to be spilling routinely, not exceptionally) and <b>£18.2m</b> for <b>unjustified dividends</b>. Ofwat directed that the penalty fall on the <b>company and its investors, not customers</b>.</p>
+
+    <h3>4.4 · Bonuses while the river suffered</h3>
+    <p>As pollution rose and debt mounted, the company continued to reward executives. The CEO's basic salary rose <b>14% to £995,000</b> in the year to March 2026 (total package ~£1.16m, including a deferred <b>£99,000</b> retention payment awarded before the ban bit), and the bonus pool for <b>other senior managers rose from £2.8m to £4.09m</b>. Separately, a multi-year <b>“management retention plan” for ~21 senior managers</b> — reported at between <b>£15.7m and £18.5m</b> (sources vary) — caused a political row; Ofwat said it was <b>not consulted</b> and only learned of it afterwards. The Environment Secretary called the payouts “outrageous” and a case of “bonuses by any other name.”</p>
+    <div class="call">
+      <span class="t">An important distinction to get right</span>
+      <p>The contested retention payments were <b>funded by the company's creditors</b> out of a ~£3bn emergency rescue loan (at 9.75% interest) — deliberately structured to sit <b>outside</b> the rule banning <i>customer</i> money from funding bonuses. That is precisely how they sidestepped the ban. Under pressure, Thames Water <b>paused</b> £2.46m of further payments in December 2025. Ofwat's new bonus rule (Water (Special Measures) Act 2025) blocked over £4m of bonuses across six companies — including Thames Water — in its first year, but it reaches only the CEO, CFO and chair, which is why the wider payments were still possible. Keep the “customer-funded vs creditor-funded” line clear; it is where the company will push back.</p>
+    </div>
+
+    <h3>4.5 · Money out, debt up</h3>
+    <p>Under Macquarie's ownership (2006–2017), roughly <b>£2.7bn</b> was extracted from the regulated company and debt rose toward £11bn. Ofwat found two dividends — £37.5m (Oct 2023) and £158.3m (Mar 2024) — breached licence conditions, penalised £18.2m and clawed back £131.3m. The company now carries roughly <b>£20&nbsp;billion of debt</b>, entered cash lock-up, saw its preferred equity partner (KKR) withdraw in June 2025, and is funded only to around <b>November 2026</b> — with temporary public ownership (Special Administration) the fallback if the creditor-led rescue fails.</p>
+
+    <h3>4.6 · The infrastructure-standards argument</h3>
+    <p>Your point about "expansion tanks" being substandard and below EU requirements needs to be framed precisely so it can't be dismissed. Here is the accurate version:</p>
+    <ul class="tight">
+      <li><b>The domestic design minimum</b> for storm-tank storage at a treatment works is modest — broadly <b>68&nbsp;litres per head</b> served, or about <b>two hours</b> of flow — and a works can be <b>fully permit-compliant and still spill</b> in heavy rain. Independent research found ~79% of large works have treatment capacity below the "3× dry-weather-flow" benchmark.</li>
+      <li><b>The EU has moved ahead.</b> The recast Urban Waste Water Treatment Directive (EU 2024/3019, in force January 2025) tightens the regime — lower size thresholds, and new <b>“quaternary” treatment for micropollutants including PFAS by ~2045</b>, funded partly by polluting industries. <b>Post-Brexit England is not bound to adopt it</b>, and an independent analysis (IEEP, 2024) documents the concrete divergence. So "England is falling below EU standards" is accurate as a <b>specific, directional</b> claim — on thresholds, micropollutants and integrated storm planning — not as a blanket assertion.</li>
+      <li><b>Mogden specifically:</b> flow to full treatment is ~1,064&nbsp;Ml/day across eight storm tanks; the 2011–13 extension added ~50% capacity, yet spills still rose. The <b>aggregate storm-tank storage volume is not published</b> and should be requested from the EA/Thames Water permit file — a genuine evidence gap (section 10). Treat "substandard" as an advocacy framing until that figure and a benchmark are in hand; "does not meet the updated EU standard" is the defensible line.</li>
+    </ul>
+
+    <h3>4.7 · Are fines cheaper than fixing? The official verdict</h3>
+    <p>The evidence that the deterrent has been too weak is now on the public record from Parliament's own bodies:</p>
+    <div class="call bad">
+      <p><b>Public Accounts Committee (2025):</b> water companies paid <b>over £430m in penalties across 2019–2024</b> against an identified need of <b>~£290&nbsp;billion of investment over 25 years</b> — penalties on the order of <b>0.1%</b> of the investment task — and <b>84% of EA fines went to the Treasury</b>, not to fixing rivers. The EA admitted a "justice gap": it cannot prosecute all the offences it finds.</p>
+      <p style="margin-top:.6em"><b>National Audit Office (April 2025):</b> "regulators have failed to deliver a trusted and resilient water sector," and "no regulator is responsible for proactively inspecting wastewater assets." The <b>Independent Water Commission (Cunliffe, July 2025)</b> recommended <b>abolishing Ofwat</b> and creating a single stronger regulator. Strengthening the whole regime is itself an admission the old penalties under-deterred.</p>
+    </div>
+    <div class="call">
+      <span class="t">Thames Water's position (include it — a fair case is a stronger case)</span>
+      <p>The company says it "takes its responsibility towards the environment very seriously," attributes pollution to problems "decades in the making" worsened by exceptionally wet weather, stresses the retention payments were creditor- not customer-funded, and points to the sector's largest-ever <b>£104bn investment programme (2025–2030)</b> and a recapitalisation plan promising <b>no dividends for 10 years</b>. The fair rebuttal is factual: <b>incidents rose to a record in 2024</b>, so claimed improvements have not yet shown up in the river — which is why independent verification, not company assurance, is the ask.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DATA MAP ===================== -->
+  <section id="data">
+    <h2><span class="n">5</span> Who holds — and interprets — the data</h2>
+    <p>One of your central questions is who is officially responsible for collecting, holding and interpreting the evidence, and whether it is good enough to base decisions on. This is the map. "Decision-grade?" is a candid assessment of whether the dataset, as held, is strong enough to support decisions about abstraction, discharge, bathing and habitat — or whether raw data and metadata still need to be obtained.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Data type</th><th>Responsible body</th><th>Named dataset / scheme</th><th>How to access</th><th>Decision-grade?</th></tr></thead>
+      <tbody>
+        <tr><td><b>Fish stocks</b></td><td>Environment Agency</td><td>National Fish Populations Database (NFPD); separate TraC dataset for the tidal reach</td><td>Ecology &amp; Fish Data Explorer; raw data via EIR/enquiry</td><td><span class="badge b-amber">Partial</span> — periodic surveys, not continuous</td></tr>
+        <tr><td><b>Eels &amp; elvers</b></td><td>EA + ZSL</td><td>Eel Management Plans (EA); Thames European Eel Project (ZSL citizen science)</td><td>EA enquiry; ZSL (marineandfreshwater@zsl.org)</td><td><span class="badge b-good">Good</span> — long ZSL series</td></tr>
+        <tr><td><b>Water quality</b></td><td>Environment Agency</td><td>Water Quality Archive (WIMS); WFD classifications</td><td>environment.data.gov.uk/water-quality &amp; /catchment-planning</td><td><span class="badge b-good">Good</span> (open)</td></tr>
+        <tr><td><b>Bathing water</b></td><td>Environment Agency</td><td>Bathing water quality (“Swimfo”), E. coli &amp; intestinal enterococci</td><td>environment.data.gov.uk/bwq</td><td><span class="badge b-amber">New site</span> — no classification until ~2029</td></tr>
+        <tr><td><b>Storm overflows / sewage</b></td><td>Thames Water (operator); EA (regulator)</td><td>Event Duration Monitoring (EDM); annual EDM returns</td><td>thameswater.co.uk/edm-map; data.gov.uk</td><td><span class="badge b-amber">Duration only</span> — not volume</td></tr>
+        <tr><td><b>Birds</b></td><td>BTO/WeBS; LNHS; GiGL; ZSL</td><td>Wetland Bird Survey; London Bird Report; GiGL records</td><td>WeBS data request (webs@bto.org); gigl.org.uk</td><td><span class="badge b-amber">Confirm sector</span> — local count sector/organiser to confirm</td></tr>
+        <tr><td><b>Invertebrates / aquatic ecology</b></td><td>EA (ID often contracted out); Riverfly Partnership; Thames21</td><td>WFD macroinvertebrate sampling; Riverfly Monitoring</td><td>EA enquiry; Cartographer (riverflies.org)</td><td><span class="badge b-amber">Partial</span></td></tr>
+        <tr><td><b>Habitat &amp; designations</b></td><td>Natural England; GiGL; councils</td><td><b>No SSSI on this reach.</b> River = SINC M031 “River Thames and tidal tributaries” (Metropolitan); Ham Lands LNR</td><td>gigl.org.uk; Natural England open data</td><td><span class="badge b-info">Non-statutory</span> locally</td></tr>
+        <tr><td><b>Foreshore / riverbed</b></td><td>PLA + Crown Estate (tidal); EA (non-tidal above Teddington)</td><td>Foreshore ownership &amp; permits</td><td>pla.co.uk/thames-foreshore-permits</td><td><span class="badge b-info">n/a</span></td></tr>
+        <tr><td><b>Whole-river ecology synthesis</b></td><td>ZSL; Thames21</td><td><i>State of the Thames</i> (2021, 2026); citizen-science monitoring</td><td>zsl.org; thames21.org.uk</td><td><span class="badge b-good">Good</span> — expert-reviewed</td></tr>
+      </tbody>
+    </table></div>
+    <div class="call">
+      <span class="t">Who is accountable for the decisions</span>
+      <p>The <b>Environment Agency</b> classifies water bodies, monitors bathing water, and decides abstraction licences and discharge permits. <b>Defra / the Secretary of State</b> designates bathing waters and approves river-basin plans. <b>Natural England</b> advises on habitats and protected sites. <b>Ofwat</b> (with the EA and Drinking Water Inspectorate, via RAPID) governs the economics. For the TDRA, because it is a Nationally Significant Infrastructure Project, <b>development consent is decided by the Secretary of State via the Planning Inspectorate</b>. No single body "owns" the river's health — which is exactly why a coordinated, evidence-led representation is needed.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTS ===================== -->
+  <section id="contacts">
+    <h2><span class="n">6</span> Stakeholders &amp; contacts</h2>
+    <h3>Live contacts — already engaged</h3>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Name / role</th><th>Body</th><th>Contact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>Munira Wilson MP</b> — Twickenham (covers Teddington)</td><td>House of Commons</td><td><a href="mailto:munira.wilson.mp@parliament.uk">munira.wilson.mp@parliament.uk</a></td><td>Engaged on signage; opposes TDRA</td></tr>
+        <tr><td><b>Cllr Julia Neden-Watts</b> — Environment lead; River Thames Scheme</td><td>Richmond Council</td><td><a href="mailto:cllr.j.neden-watts@richmond.gov.uk">cllr.j.neden-watts@richmond.gov.uk</a></td><td><span class="badge b-amber">To write</span> — referred by MP</td></tr>
+        <tr><td><b>Peter Gray</b> — Fisheries Operations Team Leader, Thames Area</td><td>Environment Agency</td><td><a href="mailto:peter.gray@environment-agency.gov.uk">peter.gray@environment-agency.gov.uk</a></td><td><span class="badge b-bad">Reply due</span> — EIR2026/31287</td></tr>
+        <tr><td><b>“Mark”</b> — Thames Tideway / marine ecologist</td><td>Environment Agency (marine team)</td><td><a href="mailto:MarineSE@environment-agency.gov.uk">MarineSE@environment-agency.gov.uk</a></td><td>Offered tideway data &amp; ZSL contacts</td></tr>
+        <tr><td>EIR / information requests</td><td>EA National Requests</td><td><a href="mailto:national.requests@environment-agency.gov.uk">national.requests@environment-agency.gov.uk</a></td><td>Ref EIR2026/31287</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Target bodies &amp; data holders — to approach</h3>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Organisation</th><th>Why</th><th>Route</th></tr></thead>
+      <tbody>
+        <tr><td><b>ZSL</b> — marine &amp; freshwater team</td><td>State of the Thames; eel/smelt/mussel records; avoid duplication</td><td><a href="mailto:marineandfreshwater@zsl.org">marineandfreshwater@zsl.org</a></td></tr>
+        <tr><td><b>BTO / WeBS</b></td><td>Wetland Bird Survey counts for the reach</td><td>Regional Organiser, Surrey &amp; SW London (contact via BTO); <a href="mailto:webs@bto.org">webs@bto.org</a></td></tr>
+        <tr><td><b>GiGL</b> — Greenspace Information for Greater London</td><td>Biodiversity records; SINC data</td><td>gigl.org.uk/access-to-information</td></tr>
+        <tr><td><b>Save Our Lands and River (SOLAR) CIC</b></td><td>Lead local campaign; the EU-standards petition</td><td>saveourlandsandriver.org.uk</td></tr>
+        <tr><td><b>Port of London Authority</b></td><td>Tidal foreshore / navigation; Thames Vision 2050</td><td>pla.co.uk</td></tr>
+        <tr><td><b>Thames21</b> · <b>Angling Trust / Thames Anglers' Conservancy</b></td><td>Citizen-science data; angling &amp; pollution</td><td>thames21.org.uk · rivertac.org</td></tr>
+        <tr><td><b>Defra · Ofwat · Natural England · GLA · Kingston Council · Thames Water</b></td><td>Policy, economics, habitats, London, upstream bank, operator</td><td>Formal correspondence per issue</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ===================== TRACKER ===================== -->
+  <section id="tracker">
+    <h2><span class="n">7</span> Correspondence &amp; action tracker</h2>
+    <p>An auditable record of every case, so nothing slips and each approach can be evidenced. Update this as replies arrive.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Date</th><th>Case / ref</th><th>With</th><th>Subject</th><th>Status</th><th>Next action</th></tr></thead>
+      <tbody>
+        <tr><td class="num">24 Jun 2026</td><td>MW68997</td><td>Munira Wilson MP</td><td>Public information signage at bathing site</td><td>Replied 29 Jun — referred to Cllr Neden-Watts</td><td><span class="badge b-amber">Write to Cllr Neden-Watts</span></td></tr>
+        <tr><td class="num">29 Jun 2026</td><td><b>EIR2026/31287</b></td><td>Environment Agency</td><td>Ecological-health data request (10 points)</td><td>Acknowledged 1 Jul · statutory deadline <b>28 Jul</b> · Peter Gray query 14 Jul</td><td><span class="badge b-bad">Reply to Peter Gray — today</span></td></tr>
+        <tr><td class="num">2 Jul 2026</td><td>— (linked to EIR)</td><td>“Mark”, EA marine team</td><td>Offer of tideway monitoring data &amp; ZSL contacts</td><td>Received — helpful initial contact</td><td>Take up offer; request ZSL names</td></tr>
+        <tr><td class="num">2022 (context)</td><td>—</td><td>Richmond XR</td><td>“Stop the Sewage” campaign</td><td>Historical background</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Immediate action list</h3>
+    <ol class="tight">
+      <li><b>Today —</b> send the reply to Peter Gray keeping EIR2026/31287 live and asking for raw data (draft in section 8).</li>
+      <li><b>This week —</b> write to Cllr Julia Neden-Watts on signage (draft in section 8).</li>
+      <li><b>This week —</b> email ZSL (marineandfreshwater@zsl.org) to coordinate with the <i>State of the Thames</i> team and avoid duplication.</li>
+      <li><b>Ongoing —</b> verify Mogden EDM figures and request the storm-tank storage capacity (EA/Thames Water permit file).</li>
+      <li><b>Ongoing —</b> request WeBS bird-count data for the reach (Penny Williams / BTO).</li>
+      <li><b>By 1 Nov —</b> drive petition 763721 toward 100,000; support the 14 Sept debate on public ownership (763721 &amp; 762640, section 9).</li>
+      <li><b>Ahead of early 2027 —</b> register as an interested party for the TDRA Development Consent Order.</li>
+    </ol>
+  </section>
+
+  <!-- ===================== DRAFT COMMS ===================== -->
+  <section id="comms">
+    <h2><span class="n">8</span> Draft communications — ready to send</h2>
+    <p>Two drafts you can use now. They are written in your voice from the record so far; edit freely. Tell me and I'll turn either into a formal Word letter on headed layout.</p>
+
+    <div class="draft">
+      <div class="dh"><b>1 · Reply to the Environment Agency</b> <span class="kv">To: peter.gray@environment-agency.gov.uk · Cc: national.requests@environment-agency.gov.uk · Subject: EIR2026/31287 — response to your query &amp; continued request</span></div>
+      <div class="letter">
+        <p>Dear Mr Gray,</p>
+        <p>Thank you for your email of 14 July, and for touching base before allocating resource — I appreciate the constructive approach and would like to keep the request live while helping you refine it.</p>
+        <p>Yes, I know the England Catchment Data Explorer, and it is genuinely useful for the Water Framework Directive classifications and the “reasons for not achieving good.” However, it provides summarised classification outputs rather than the underlying records, and my request of 29 June (points 1–10) is specifically for the raw data and survey metadata beneath those summaries, so the evidence can be analysed independently. The Explorer therefore partly, but not fully, meets the request.</p>
+        <p>To keep this manageable, may I suggest we prioritise the <b>Teddington-to-Richmond reach</b> and the <b>last 20 years</b>, and that you release what you hold in whatever format is easiest — I can process raw data. Specifically I would still value:</p>
+        <p style="margin-left:14px">• <b>Fish</b> — raw National Fish Populations Database records (species, numbers, lengths, ages, dates, locations, methods) for this reach, plus the transitional/coastal (TraC) dataset for the tidal body below Teddington, and any eel/elver monitoring.<br>
+        • <b>Water quality</b> — the Water Quality Archive (WIMS) time-series for the local sampling points (dissolved oxygen, phosphate, nitrate, ammonia, temperature, and metals including zinc), and the new Ham &amp; Kingston bathing-water sampling.<br>
+        • <b>Aquatic ecology</b> — WFD macroinvertebrate results and, where held, the analysts'/contractors' reports.<br>
+        • <b>Sewage</b> — storm-overflow / Event Duration Monitoring records for the reach, and in particular Mogden's storm-tank storage capacity and flow-to-full-treatment figures.<br>
+        • <b>Habitat</b> — any riverbank, wetland, mudflat or riparian condition surveys.<br>
+        • <b>Metadata (points 8–10)</b> — which organisations collected each dataset, whether methods and locations are consistent over time, and any known gaps, limitations or uncertainties.</p>
+        <p>On birds (point 3), I understand the EA does not hold this data. Could you confirm that and, if so, signpost the holders — I will approach BTO/WeBS, the London Natural History Society, GiGL and ZSL directly.</p>
+        <p>Please also pass my thanks to your marine-team colleague “Mark”, who kindly made contact on 2 July about the tideway monitoring that predates 1999. I would welcome being connected with him on the invertebrate and water-quality elements, and with the ZSL team he mentioned who are compiling the <i>State of the Thames</i> data, so I can avoid duplicating work already under way.</p>
+        <p>I appreciate the statutory deadline falls today; given the breadth, I am content for you to take the reasonable additional time the Regulations allow for more complex requests, provided the request remains active. And if any part is still too broad, please tell me how you would prefer to narrow or stage it, rather than refusing it.</p>
+        <p>With thanks for your help and time,<br>Duncan Lawrence<br><span class="kv">[programme contact address — supplied in correspondence]</span></p>
+      </div>
+    </div>
+
+    <div class="draft">
+      <div class="dh"><b>2 · Letter to Cllr Julia Neden-Watts (signage)</b> <span class="kv">To: cllr.j.neden-watts@richmond.gov.uk · Subject: Public information signage at the Ham &amp; Kingston bathing water site (ref MW68997)</span></div>
+      <div class="letter">
+        <p>Dear Councillor Neden-Watts,</p>
+        <p>Munira Wilson MP kindly suggested I contact you, given your environment brief and your work with the River Thames Scheme.</p>
+        <p>Now that the Thames at Ham &amp; Kingston is London's first designated river bathing water, I would like to help arrange clear, lawful public-information signage at the recognised access points. My concern is simple: designation triggers monitoring, but a full water-quality classification will not exist until around 2029, and bacterial levels can rise sharply after rain and storm-overflow events. People deserve to be able to check before they swim.</p>
+        <p>I am proposing modest signage with QR codes linking to the Environment Agency's official bathing-water page for the site, Thames Water's near-real-time storm-discharge map, public safety advice, and the current petitions on river protection. Where appropriate it could be installed and maintained by local volunteers at little cost.</p>
+        <p>Would you be willing to help convene the relevant parties — Richmond and Kingston Councils, the Environment Agency, the Port of London Authority, the Ham &amp; Kingston Bathers, the Teddington Bluetits and Save Our Lands and River — to agree a simple, responsible plan? I would gladly do the legwork.</p>
+        <p>With thanks,<br>Duncan Lawrence</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PETITIONS ===================== -->
+  <section id="petitions">
+    <h2><span class="n">9</span> Petitions &amp; public awareness</h2>
+    <p>You've identified the real bottleneck: these campaigns don't fail for lack of support — they fail because people never see the petitions they could sign. The key strategic fact is that <b>only petitions on the official UK Government &amp; Parliament site (petition.parliament.uk) carry procedural force</b>: <b>10,000 signatures</b> compels a government response, and <b>100,000</b> means it is <b>considered for a debate</b>. Change.org and 38 Degrees petitions are useful for momentum and mailing lists, but carry no parliamentary weight. So awareness effort should point first at the official petitions below.</p>
+
+    <div class="pet">
+      <div class="ph">
+        <div class="title">⭐ “Ensure new sewage treatment infrastructure meets higher standards as in the EU” <span class="badge b-info">Parliament · 763721</span><br><span class="kv">The Save Our Lands and River petition — the main Westminster vehicle for the Teddington fight. This is the one you flagged.</span></div>
+        <div class="count">10,699</div>
+      </div>
+      <div class="petgrid">
+        <div class="qr"><img src="data:image/png;base64,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" alt="QR code to petition 763721"><span>Scan to sign 763721</span></div>
+        <div class="body">
+          <div class="meter">
+            <div class="fill" style="width:10.7%"></div>
+            <div class="thr" style="left:10%"><span>10k ✓ response</span></div>
+            <div class="thr" style="left:99.5%"><span>100k debate</span></div>
+          </div>
+          <p style="margin:.3em 0 0"><b>Passed 10,000 on 27 July 2026</b> — a government response is now required. It needs <b>100,000 by ~1 November 2026</b> to be considered for a debate. <span class="badge b-good">Priority — push toward 100k</span><br>
+          <span class="kv">petition.parliament.uk/petitions/763721 · count observed 28 Jul 2026</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pet">
+      <div class="ph">
+        <div class="title">“Hold a referendum to bring the water industry into public ownership” <span class="badge b-info">Parliament · 762640</span></div>
+        <div class="count">161,852</div>
+      </div>
+      <div class="petgrid">
+        <div class="qr"><img src="data:image/png;base64,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" alt="QR code to petition 762640"><span>Scan to sign 762640</span></div>
+        <div class="body">
+          <div class="meter">
+            <div class="fill" style="width:100%"></div>
+            <div class="thr" style="left:10%"><span>10k</span></div>
+            <div class="thr" style="left:99.5%"><span>100k ✓</span></div>
+          </div>
+          <p style="margin:.3em 0 0"><b>Passed both thresholds.</b> Government responded 23 Apr 2026 (declined nationalisation); <b>scheduled for debate on 14 September 2026</b>. The single largest live petition in this space — worth amplifying around the debate date. <span class="badge b-good">Debate 14 Sept</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pet">
+      <div class="ph">
+        <div class="title">“Stop the Abstraction Plant at Teddington Weir and releasing treated sewage into the river” <span class="badge b-open">Change.org · campaigning</span></div>
+        <div class="count">34,121</div>
+      </div>
+      <div class="petgrid">
+        <div class="qr"><img src="data:image/png;base64,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" alt="QR code to Change.org Teddington Weir petition"><span>Scan to sign</span></div>
+        <div class="body">
+          <p style="margin:0"><b>The TDRA-specific mass petition</b> (Save Our Lands and River). ~34,000 signatures show real public strength — useful for media and for demonstrating opposition in the DCO process — but as a Change.org petition it does <b>not</b> trigger a government response or debate. Pair it with petition 763721, which does. <span class="badge b-amber">Momentum, not procedure</span></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="kv">Also open on Parliament's site (below the 10k response threshold): 757426 “Nationalise water companies…” (~29,900); 762503 “Ban dividends if they pollute in dry weather”; 764048 “Public inquiry into raw sewage.” These need visibility to matter.</p>
+
+    <div class="call">
+      <span class="t">Lawful, effective ways to close the awareness gap</span>
+      <p>QR-code signage at the bathing site and access points (<b>with the landowner's / council's permission</b> — see the signage letter in section 8); milestone stories in local press (“petition passes 10,000” is a natural news hook); shareable graphics with the direct link; and the people already on the river — parkrun, swimming, angling, rowing and paddle groups, residents' associations and Save Our Lands and River. The single highest-value action right now is getting petition <b>763721</b> in front of enough people to reach 100,000 before it closes.</p>
+    </div>
+    <p class="kv">A printable one-page QR flyer for these petitions can be produced on request (workstream G).</p>
+  </section>
+
+  <!-- ===================== GAPS ===================== -->
+  <section id="gaps">
+    <h2><span class="n">10</span> Evidence gaps — what to obtain next</h2>
+    <p>A credible representation is honest about what it does not yet have. These are the open items; closing them is built into the action list (section 7).</p>
+    <ul class="tight">
+      <li><b>Raw EA datasets</b> — fish, water quality, invertebrates and habitat surveys for the reach, with methods and metadata (being requested via EIR2026/31287).</li>
+      <li><b>Mogden storm capacity</b> — the aggregate storm-tank storage volume is not published; request it from the EA/Thames Water permit file, and <b>verify the EDM spill figures</b> (438/164/221/471 hrs) against the raw EA annual returns rather than the aggregator.</li>
+      <li><b>Bird data</b> — confirm the exact WeBS count sector(s) and the north (Middlesex) bank organiser; obtain the count series (BTO/WeBS).</li>
+      <li><b>Fish counter</b> — confirm whether any automated fish counter operates on this reach (not verified).</li>
+      <li><b>ZSL figures</b> — confirm the <i>State of the Thames</i> headline numbers against the published PDF, and coordinate directly to avoid duplication.</li>
+      <li><b>Verification items</b> — the retention-plan total (£15.7m vs £18.5m), the current Environment Secretary's name/quote, the recast EU Directive's exact per-plant deadlines, and the BBC article you sent (link could not be opened here — worth re-checking).</li>
+      <li><b>Your own primary evidence</b> — your weekly observations, photographs, catch/sighting logs and dated notes. First-hand, time-stamped local evidence from a 20-year river user is exactly what official datasets lack. Drop these into the Thames Water folder and I'll turn them into dated exhibits.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== SOURCES ===================== -->
+  <section id="sources">
+    <h2><span class="n">11</span> Sources</h2>
+    <p>Grouped for reference. Official and regulatory sources are prioritised. Items flagged “verify” in the text should be confirmed against these primary sources before formal submission.</p>
+
+    <details class="srcgrp" open><summary>Bathing water &amp; designation</summary><div><ul class="src">
+      <li><a href="https://www.gov.uk/government/news/13-new-bathing-sites-open-across-england-helping-communities-and-waterways">GOV.UK — 13 new bathing sites open across England (Defra, 15 May 2026)</a></li>
+      <li><a href="https://www.kingston.gov.uk/safety-crime-and-emergencies/safety-in-kingston/stay-safe-near-water/kingstons-designated-bathing-water-site">Royal Borough of Kingston — Kingston's designated bathing water site</a></li>
+      <li><a href="https://www.richmond.gov.uk/news/news_may_2026/londons_first_thames_bathing_site">Richmond Council — London's first Thames bathing site (May 2026)</a></li>
+      <li><a href="https://environment.data.gov.uk/bwq/profiles/help-understanding-data.html">Environment Agency (Swimfo) — how bathing-water classification works</a></li>
+      <li><a href="https://www.legislation.gov.uk/uksi/2013/1675/made">The Bathing Water Regulations 2013</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Water Framework Directive &amp; water quality</summary><div><ul class="src">
+      <li><a href="https://environment.data.gov.uk/catchment-planning">Environment Agency — Catchment Data Explorer</a></li>
+      <li><a href="https://environment.data.gov.uk/catchment-planning/WaterBody/GB106039023232">Water body — Thames (Egham to Teddington), GB106039023232</a></li>
+      <li><a href="https://environment.data.gov.uk/catchment-planning/WaterBody/GB530603911402">Water body — Thames Middle (tidal), GB530603911402</a></li>
+      <li><a href="https://environment.data.gov.uk/water-quality/view/download">Environment Agency — Water Quality Archive (WIMS) download</a></li>
+      <li><a href="https://www.legislation.gov.uk/uksi/2017/407/made">The Water Environment (WFD) (England and Wales) Regulations 2017</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Sewage, Mogden &amp; storm overflows</summary><div><ul class="src">
+      <li><a href="https://www.thameswater.co.uk/edm-map">Thames Water — storm-discharge (EDM) map</a></li>
+      <li><a href="https://www.thameswater.co.uk/about-us/performance/mogden">Thames Water — Mogden performance page</a></li>
+      <li><a href="https://www.floodmapper.co.uk/stations/mogden-wwtw">Floodmapper — Mogden STW EDM (republishing EA data)</a></li>
+      <li><a href="https://environmentagency.blog.gov.uk/2025/03/27/what-are-the-2024-edm-annual-returns">Environment Agency — 2024 EDM annual returns (blog)</a></li>
+      <li><a href="https://www.bbc.co.uk/news/uk-england-london-60046320">BBC — More than 2bn litres of raw sewage discharged at Mogden (Oct 2020)</a></li>
+      <li><a href="https://www.tideway.london/news/press-releases/2025/february/london-s-super-sewer-now-fully-connected-promising-a-greener-healthier-river-thames/">Tideway — Super Sewer fully connected (Feb 2025)</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Teddington Direct River Abstraction (TDRA)</summary><div><ul class="src">
+      <li><a href="https://www.thameswater.co.uk/about-us/regulation/strategic-water-resource-solutions/teddington-direct-river-abstraction">Thames Water — Teddington Direct River Abstraction</a></li>
+      <li><a href="https://thames-sro.co.uk/projects/tdra/">Thames Water Strategic Resource Options — TDRA project</a></li>
+      <li><a href="https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/WA010006">Planning Inspectorate — TDRA project record WA010006 (DCO)</a></li>
+      <li><a href="https://hansard.parliament.uk/commons/2024-02-21/debates/24022161000031/TeddingtonDirectRiverAbstractionProject">Hansard — TDRA Westminster Hall debate (21 Feb 2024)</a></li>
+      <li><a href="https://kingston.nub.news/news/local-news/ofwat-approves-funding-for-thames-waters-teddington-abstraction-project-265658">Ofwat approves TDRA development funding (July 2025)</a></li>
+      <li><a href="https://saveourlandsandriver.org.uk/why-do-we-object">Save Our Lands and River — Why we object</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Ecology — ZSL State of the Thames</summary><div><ul class="src">
+      <li><a href="https://www.zsl.org/what-we-do/projects/state-of-the-thames">ZSL — The State of the Thames (2021 &amp; 2026 editions)</a></li>
+      <li><a href="https://www.zsl.org/what-we-do/projects/european-eel-conservation">ZSL — European eel conservation (Thames Eel Project)</a></li>
+      <li><a href="https://www.zsl.org/conservation/regions/uk-europe/tidal-thames-fish-conservation">ZSL — Fish conservation in the tidal Thames (smelt)</a></li>
+      <li><a href="https://www.zsl.org/what-we-do/projects/thames-invasive-species">ZSL — Thames invasive species (quagga mussel)</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Thames Water — enforcement &amp; pollution record</summary><div><ul class="src">
+      <li><a href="https://www.gov.uk/government/publications/water-and-sewerage-companies-in-england-pollution-incident-report-for-2016-to-2024/water-and-sewerage-companies-in-england-pollution-incident-report-for-2016-to-2024">EA — Pollution incident report 2016–2024 (523 incidents; 1★ rating)</a></li>
+      <li><a href="https://www.gov.uk/government/news/new-report-finds-systemic-water-company-failure-and-underperformance">EA — Systemic water-company failure and underperformance</a></li>
+      <li><a href="https://www.ofwat.gov.uk/ofwat-fines-thames-water-nearly-123m-following-two-investigations-into-the-company/">Ofwat — £122.7m penalty (May 2025)</a></li>
+      <li><a href="https://www.bbc.co.uk/news/uk-england-39352755">BBC — Thames Water fined £20m for sewage (2017)</a></li>
+      <li><a href="https://www.bbc.co.uk/news/uk-england-sussex-66097906">BBC — Thames Water fined £3.3m over river sewage (2023)</a></li>
+      <li><a href="https://environmentagency.blog.gov.uk/2022/02/16/environment-agency-investigation-into-sewage-treatment-works">EA — criminal investigation into sewage treatment works</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Thames Water — finances, bonuses &amp; dividends</summary><div><ul class="src">
+      <li><a href="https://www.ofwat.gov.uk/ofwat-finds-thames-water-has-broken-dividend-payment-rules/">Ofwat — Thames Water broke dividend rules (£18.2m penalty)</a></li>
+      <li><a href="https://www.bbc.co.uk/news/articles/cg4zklxgwwwo">BBC — Boss defends executive bonuses as sewage spills soar</a></li>
+      <li><a href="https://www.itv.com/news/2025-07-09/thames-water-opts-not-to-claw-back-25m-of-bonuses">ITV — Thames Water and the £15.7m retention plan</a></li>
+      <li><a href="https://www.theguardian.com/business/2026/jul/15/thames-water-funding-survive-end-of-year">Guardian — Thames Water funding to survive year-end (Jul 2026)</a></li>
+      <li><a href="https://www.bbc.com/news/articles/c781v25e8xqo">BBC — Thames Water payouts to bosses (Jul 2026)</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Infrastructure standards &amp; official reviews</summary><div><ul class="src">
+      <li><a href="https://www.gov.uk/government/publications/water-companies-environmental-permits-for-storm-overflows-and-emergency-overflows/water-companies-environmental-permits-for-storm-overflows-and-emergency-overflows">EA — Permits for storm overflows (design standards)</a></li>
+      <li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202403019">EU — Recast Urban Waste Water Treatment Directive 2024/3019</a></li>
+      <li><a href="https://ieep.uk/wp-content/uploads/2024/10/UK_EU_Divergence_Urban_Wastewater_October_2024_Final.pdf">IEEP — Diverging wastewater policy: UK vs EU (Oct 2024)</a></li>
+      <li><a href="https://www.nao.org.uk/press-releases/regulators-have-failed-to-deliver-a-trusted-and-resilient-water-sector-nao/">National Audit Office — Regulating the water sector (Apr 2025)</a></li>
+      <li><a href="https://publications.parliament.uk/pa/cm5901/cmselect/cmpubacc/824/report.html">Public Accounts Committee — Water sector regulation (2025)</a></li>
+      <li><a href="https://assets.publishing.service.gov.uk/media/687dfcc4312ee8a5f0806be6/Independent_Water_Commission_-_Final_Report_-_21_July.pdf">Independent Water Commission (Cunliffe) — Final Report (Jul 2025)</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Data holders &amp; monitoring schemes</summary><div><ul class="src">
+      <li><a href="https://environment.data.gov.uk/dataset/ce2618db-d507-4671-bafe-840b930d2297">EA — National Fish Populations Database (NFPD)</a></li>
+      <li><a href="https://www.bto.org/our-science/projects/wetland-bird-survey">BTO — Wetland Bird Survey (WeBS)</a> · <a href="https://www.btosurrey.co.uk/surveys/wetland-bird-survey/">WeBS Surrey &amp; SW London</a></li>
+      <li><a href="https://www.gigl.org.uk/access-to-information/">GiGL — access to information</a> · <a href="https://www.gigl.org.uk/sinc/m031/">SINC M031 “River Thames and tidal tributaries”</a></li>
+      <li><a href="https://www.riverflies.org/riverfly-monitoring-initiative-rmi">Riverfly Partnership — Monitoring Initiative</a></li>
+      <li><a href="https://pla.co.uk/thames-foreshore-permits">Port of London Authority — Thames foreshore</a></li>
+      <li><a href="http://thames-landscape-strategy.org.uk/">Thames Landscape Strategy (Hampton to Kew)</a></li>
+    </ul></div></details>
+
+    <details class="srcgrp"><summary>Petitions</summary><div><ul class="src">
+      <li><a href="https://petition.parliament.uk/petitions/763721">Parliament 763721 — Higher sewage-treatment standards as in the EU (SOLAR)</a></li>
+      <li><a href="https://petition.parliament.uk/petitions/762640">Parliament 762640 — Referendum on water public ownership</a></li>
+      <li><a href="https://petition.parliament.uk/petitions/757426">Parliament 757426 — Nationalise water companies</a></li>
+      <li><a href="https://www.change.org/p/stop-the-abstraction-plant-at-teddington-weir-and-releasing-treated-sewage-into-the-river">Change.org — Stop the Abstraction Plant at Teddington Weir</a></li>
+      <li><a href="https://saveourlandsandriver.org.uk/">Save Our Lands and River (SOLAR)</a></li>
+    </ul></div></details>
+  </section>
+
+
+
+</div></main>
+
+<footer>
+  <div class="foot">
+    <p><b>River Thames Evidence &amp; Representation Programme</b> — a living working document. Figures are sourced in section 11; items marked “to be verified” should be confirmed against primary data before formal submission.<br>
+    Prepared as an organising tool for Duncan Lawrence · 28 July 2026 · Not legal advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>

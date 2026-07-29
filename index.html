@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River Thames Evidence &amp; Representation Programme — Teddington to Richmond</title>
+<meta name="description" content="An independent, source-referenced evidence programme on the ecological health, water quality, public use and official monitoring of the River Thames between Teddington Weir and Richmond.">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Cpath d='M4 20c4-3 6 3 10 0s6 3 10 0' stroke='%232a6f97' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 25c4-3 6 3 10 0s6 3 10 0' stroke='%230f6f7a' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  /* Palette and tokens carried over verbatim from the programme dashboard
+     so the landing page and the documents read as one system. */
+  :root{
+    --navy:#0b2545; --navy2:#13315c; --teal:#0f6f7a; --teal-d:#0b565f;
+    --river:#2a6f97; --ink:#1a2733; --body:#33424f; --muted:#5c6b78;
+    --line:#dce4ec; --line2:#e9eef3; --bg:#f5f8fa; --card:#ffffff;
+    --info:#1d5e8c; --info-bg:#e8f1f8;
+    --shadow:0 1px 2px rgba(11,37,69,.06),0 3px 10px rgba(11,37,69,.05);
+    --shadow-lift:0 2px 4px rgba(11,37,69,.08),0 10px 24px rgba(11,37,69,.10);
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--body);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--river)}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{color:var(--navy); line-height:1.25; margin:0 0 .5em}
+  p{margin:0 0 1em}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
+
+  /* Keyboard users get a visible landing spot on every focusable element. */
+  a:focus-visible,.skip:focus{outline:3px solid var(--teal); outline-offset:3px; border-radius:4px}
+  .skip{
+    position:absolute; left:-9999px; top:0; z-index:100;
+    background:#fff; color:var(--navy); padding:12px 18px; font-weight:600;
+    border-radius:0 0 var(--radius) 0;
+  }
+  .skip:focus{left:0}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal-d) 100%);
+    color:#eaf1f6; padding:64px 0 56px;
+  }
+  header.hero .eyebrow{
+    font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+    color:#8fb8c9; margin-bottom:14px;
+  }
+  header.hero h1{
+    color:#fff; font-size:2.4rem; letter-spacing:-.02em;
+    margin-bottom:.4em; max-width:20ch;
+  }
+  header.hero .mission{
+    color:#cfe0ea; font-size:1.08rem; max-width:68ch; margin-bottom:22px;
+  }
+  header.hero .meta{display:flex; flex-wrap:wrap; gap:8px 10px; font-size:.82rem}
+  header.hero .meta span{
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18);
+    padding:5px 12px; border-radius:999px; color:#eaf1f6;
+  }
+
+  main{padding:36px 0 56px}
+  section{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:28px 30px; margin:0 0 24px;
+  }
+  section>h2{
+    font-size:1.5rem; letter-spacing:-.01em; padding-bottom:12px;
+    border-bottom:2px solid var(--line2); margin-bottom:18px;
+  }
+  .lede{font-size:1.05rem; color:var(--ink)}
+  section p:last-child{margin-bottom:0}
+
+  .principles{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px}
+  .principles li{
+    padding:12px 16px; background:var(--info-bg); border-left:3px solid var(--info);
+    border-radius:0 8px 8px 0; font-size:.95rem;
+  }
+  .principles strong{color:var(--navy)}
+
+  /* ---------- Document cards ---------- */
+  .doc-grid{
+    display:grid; gap:18px; margin:0; padding:0; list-style:none;
+    grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  }
+  .doc-card{
+    position:relative; display:flex; flex-direction:column;
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 22px 20px; transition:box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .doc-card:hover{box-shadow:var(--shadow-lift); border-color:#c2d3e2; transform:translateY(-2px)}
+  /* The whole card is the click target, but only the <a> is in the tab order,
+     so keyboard and pointer users get the same affordance without duplicate stops. */
+  .doc-card:focus-within{box-shadow:var(--shadow-lift); border-color:var(--teal)}
+  .doc-card h3{font-size:1.1rem; margin:0 0 .45em}
+  .doc-card h3 a{color:var(--navy); text-decoration:none}
+  .doc-card h3 a::after{content:""; position:absolute; inset:0; border-radius:var(--radius)}
+  .doc-card h3 a:hover{text-decoration:underline}
+  .doc-card p{font-size:.92rem; color:var(--body); margin:0 0 14px}
+  .doc-card .tag{
+    align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:#fff; background:var(--teal);
+    padding:3px 9px; border-radius:999px; margin-bottom:12px;
+  }
+  .doc-card .foot{
+    margin-top:auto; padding-top:12px; border-top:1px solid var(--line2);
+    font-size:.8rem; color:var(--muted); display:flex; justify-content:space-between; gap:10px;
+  }
+  .doc-card .open{color:var(--river); font-weight:600}
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    background:var(--navy); color:#c3d4e0; padding:34px 0 38px; font-size:.88rem;
+  }
+  footer.site .wrap>p{margin:0 0 .7em; max-width:80ch}
+  footer.site strong{color:#fff; font-weight:600}
+  footer.site a{color:#9ec7dd}
+  footer.site .rule{height:1px; background:rgba(255,255,255,.14); margin:16px 0}
+
+  @media (max-width:640px){
+    header.hero{padding:44px 0 38px}
+    header.hero h1{font-size:1.75rem}
+    header.hero .mission{font-size:1rem}
+    section{padding:22px 20px}
+    section>h2{font-size:1.3rem}
+    .doc-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .doc-card{transition:none}
+    .doc-card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#documents">Skip to documents</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Evidence-led representation · Teddington · Ham · Kingston · Richmond · Petersham</p>
+    <h1>River Thames Evidence &amp; Representation Programme</h1>
+    <p class="mission">
+      A structured, source-referenced case on the ecological health, water quality, public use and
+      official monitoring of the River Thames between Teddington Weir and Richmond — and what needs
+      to be done about it. Every figure published here carries a citation to its original source,
+      so that residents, regulators and elected representatives can check the evidence for
+      themselves rather than take it on trust.
+    </p>
+    <p class="meta">
+      <span>Independent programme</span>
+      <span>Open evidence · sources cited</span>
+      <span>Teddington Weir to Richmond</span>
+    </p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">What this is</h2>
+      <p class="lede">
+        This site publishes the working documents of an independent evidence programme concerning
+        a single stretch of the tidal and freshwater Thames. It is not a campaign site and it does
+        not ask you to accept a conclusion.
+      </p>
+      <p>
+        The purpose is narrow and practical: to assemble what is actually known about this reach of
+        the river from official monitoring, published datasets and public records; to identify
+        clearly where that evidence is thin, contested or absent; and to set out proportionate asks
+        of the bodies that hold statutory responsibility for it. The documents below are working
+        documents. They are versioned, dated, and revised as new information is obtained.
+      </p>
+      <ul class="principles">
+        <li><strong>Sourced.</strong> Figures and claims are referenced to the dataset, publication or public record they came from.</li>
+        <li><strong>Provisional.</strong> Material is published at working-draft stage and marked with its version and date, not held back until it is final.</li>
+        <li><strong>Corrigible.</strong> Where a body identifies an error in this evidence, the correction is made and recorded.</li>
+      </ul>
+    </section>
+
+    <section id="documents" aria-labelledby="documents-h">
+      <h2 id="documents-h">Documents &amp; evidence</h2>
+      <p>
+        Each document below is a self-contained page. They are provided for public and stakeholder
+        review and may be read, cited and shared freely.
+      </p>
+
+      <ul class="doc-grid">
+
+        <!-- ===================================================================
+             TO ADD A DOCUMENT:
+             1. Drop your .html file into /docs
+             2. Copy one <li class="doc-card"> block below and edit the four
+                parts marked ①②③④. Nothing else needs to change.
+             ================================================================ -->
+
+        <li class="doc-card">
+          <span class="tag">Dashboard</span>
+          <!-- ① link + ② title -->
+          <h3><a href="/docs/River-Thames-Programme-Dashboard.html">Programme Dashboard</a></h3>
+          <!-- ③ description -->
+          <p>
+            The master working document: the evidence base, the programme of work, accountability
+            of the water undertaker, which bodies hold which data, stakeholder mapping, the
+            correspondence tracker, identified evidence gaps and the full source list.
+          </p>
+          <!-- ④ status / date -->
+          <p class="foot"><span>Working document · v1 · 28 July 2026</span><span class="open">Open →</span></p>
+        </li>
+
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Independent evidence programme — River Thames, Teddington to Richmond</strong></p>
+    <p>
+      Documents on this site are provided for public and stakeholder review. They are working
+      documents: they carry their own version number and date, and are revised as further
+      information is obtained. Where an error is identified, it is corrected and the correction
+      recorded.
+    </p>
+    <div class="rule"></div>
+    <p>Last updated: <time datetime="2026-07-28">28 July 2026</time></p>
+    <p>This site sets no cookies, runs no analytics and makes no third-party requests.</p>
+  </div>
+</footer>
+
+</body>
+</html>
