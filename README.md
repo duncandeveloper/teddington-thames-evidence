@@ -39,13 +39,58 @@ are not.
 .
 ├── index.html                  Landing page. Self-contained, inline CSS, no JS.
 ├── 404.html                    Not-found page, links back to home.
-├── staticwebapp.config.json    Routing, 404 override, security headers.
+├── staticwebapp.config.json    Routing, 404 override, security headers, image caching.
+├── favicon.ico / favicon.svg   Browser-tab icons (waves-and-weir mark).
+├── apple-touch-icon.png        iOS home-screen icon.
+├── icon-192.png / icon-512.png Manifest icons.
+├── site.webmanifest            Web app manifest.
+├── robots.txt                  Crawl policy + pointer to the sitemap.
+├── sitemap.xml                 Page list for search engines (see SEO section).
 ├── .gitignore
+├── images/
+│   ├── originals/              Full-resolution source illustrations (PNG).
+│   ├── web/                    Optimised derivatives the pages serve (WebP + JPEG, 1600w and 800w).
+│   └── brand/                  Logo mark, horizontal lockup, social-share image.
 └── docs/
     └── River-Thames-Programme-Dashboard.html
 ```
 
 Documents live in `docs/`. The landing page links to them at `/docs/<filename>.html`.
+
+---
+
+## Images, branding and SEO
+
+**Naming is deliberate.** Every image file is named descriptively with hyphens —
+`river-thames-water-quality-monitoring-teddington-1600.webp`, never `IMG_0231.png` — and every
+`<img>` on a page carries descriptive `alt` text. Keep that convention for anything new: the
+filename and the alt text are what search engines index.
+
+**Adding an image to a page.** Drop the full-size PNG into `images/originals/` under a
+descriptive hyphenated name, then generate four derivatives into `images/web/`:
+1600×900 and 800×450, each as `.webp` (quality ~80) and `.jpg` (quality ~82). Reference them
+with a `<picture>` block — WebP `<source>` plus JPEG `<img>` fallback — with `loading="lazy"`,
+explicit `width`/`height`, and honest alt text. The gallery and lightbox markup in
+`index.html` are the template to copy.
+
+**Honesty rule.** The seven current illustrations are AI-assisted artwork commissioned for the
+site. The gallery labels them as illustrations, and they must never be presented as photographs
+or evidence — anything presented as evidence gets a source, like every figure on this site.
+
+**The mark.** The logo is a navy badge: a heron standing at the dashed white line of Teddington
+Weir — the tidal limit this programme's geography pivots on — above one freshwater and one
+tidal wave. `favicon.svg` / `favicon.ico` use a simplified waves-and-weir variant that stays
+legible at 16 px. The full lockup is `images/brand/logo.svg`; the social-share card
+(`og:image`) is `images/brand/river-thames-evidence-programme-share.jpg`.
+
+**Search engines.** `sitemap.xml` lists the indexable pages; `robots.txt` points crawlers at
+it. The lightbox anchors (`#lb-1`…) are fragments, not pages, so they need no sitemap entries.
+When the custom domain goes live:
+
+1. Search-and-replace the `jolly-flower…azurestaticapps.net` host in `sitemap.xml`,
+   `robots.txt`, `index.html` and the dashboard (the `og:` meta tags).
+2. Verify the domain in Google Search Console and submit `/sitemap.xml`.
+3. When adding a document, add a matching `<url>` entry to `sitemap.xml` with its `lastmod`.
 
 ---
 
