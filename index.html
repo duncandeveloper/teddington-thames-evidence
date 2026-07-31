@@ -7,207 +7,31 @@
 <meta name="description" content="An independent, source-referenced evidence programme on the ecological health, water quality, public use and official monitoring of the River Thames between Teddington Weir and Richmond.">
 <meta name="robots" content="index, follow">
 <meta name="color-scheme" content="light">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b2545">
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="River Thames Evidence &amp; Representation Programme">
-<meta property="og:title" content="River Thames Evidence &amp; Representation Programme — Teddington to Richmond">
-<meta property="og:description" content="An independent, source-referenced evidence programme on the ecological health, water quality, public use and official monitoring of the River Thames between Teddington Weir and Richmond.">
-<meta property="og:url" content="https://jolly-flower-06c523503.7.azurestaticapps.net/">
-<meta property="og:image" content="https://jolly-flower-06c523503.7.azurestaticapps.net/images/brand/river-thames-evidence-programme-share.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Illustration of the River Thames at Teddington with the programme title overlaid.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jolly-flower-06c523503.7.azurestaticapps.net/images/brand/river-thames-evidence-programme-share.jpg">
-<style>
-  /* Palette and tokens carried over verbatim from the programme dashboard
-     so the landing page and the documents read as one system. */
-  :root{
-    --navy:#0b2545; --navy2:#13315c; --teal:#0f6f7a; --teal-d:#0b565f;
-    --river:#2a6f97; --ink:#1a2733; --body:#33424f; --muted:#5c6b78;
-    --line:#dce4ec; --line2:#e9eef3; --bg:#f5f8fa; --card:#ffffff;
-    --info:#1d5e8c; --info-bg:#e8f1f8;
-    --shadow:0 1px 2px rgba(11,37,69,.06),0 3px 10px rgba(11,37,69,.05);
-    --shadow-lift:0 2px 4px rgba(11,37,69,.08),0 10px 24px rgba(11,37,69,.10);
-    --radius:12px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--body);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--river)}
-  a:hover{text-decoration:underline}
-  h1,h2,h3{color:var(--navy); line-height:1.25; margin:0 0 .5em}
-  p{margin:0 0 1em}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
-
-  /* Keyboard users get a visible landing spot on every focusable element. */
-  a:focus-visible,.skip:focus{outline:3px solid var(--teal); outline-offset:3px; border-radius:4px}
-  .skip{
-    position:absolute; left:-9999px; top:0; z-index:100;
-    background:#fff; color:var(--navy); padding:12px 18px; font-weight:600;
-    border-radius:0 0 var(--radius) 0;
-  }
-  .skip:focus{left:0}
-
-  /* ---------- Hero ---------- */
-  header.hero{
-    background:
-      linear-gradient(102deg, rgba(11,37,69,.97) 0%, rgba(11,37,69,.94) 32%, rgba(19,49,92,.85) 54%, rgba(11,86,95,.38) 100%),
-      url('/images/web/river-thames-water-quality-monitoring-teddington-1600.webp') right center/cover no-repeat,
-      linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal-d) 100%);
-    color:#eaf1f6; padding:74px 0 66px;
-  }
-  header.hero .mark{
-    display:block; width:56px; height:56px; margin-bottom:20px;
-    border-radius:13px; box-shadow:0 3px 14px rgba(4,14,28,.45);
-  }
-  header.hero h1,header.hero .mission{text-shadow:0 1px 10px rgba(8,20,38,.30)}
-  header.hero .eyebrow{
-    font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
-    color:#8fb8c9; margin-bottom:14px;
-  }
-  header.hero h1{
-    color:#fff; font-size:2.4rem; letter-spacing:-.02em;
-    margin-bottom:.4em; max-width:20ch;
-  }
-  header.hero .mission{
-    color:#cfe0ea; font-size:1.08rem; max-width:68ch; margin-bottom:22px;
-  }
-  header.hero .meta{display:flex; flex-wrap:wrap; gap:8px 10px; font-size:.82rem}
-  header.hero .meta span{
-    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18);
-    padding:5px 12px; border-radius:999px; color:#eaf1f6;
-  }
-
-  main{padding:36px 0 56px}
-  section{
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-    box-shadow:var(--shadow); padding:28px 30px; margin:0 0 24px;
-  }
-  section>h2{
-    font-size:1.5rem; letter-spacing:-.01em; padding-bottom:12px;
-    border-bottom:2px solid var(--line2); margin-bottom:18px;
-  }
-  .lede{font-size:1.05rem; color:var(--ink)}
-  section p:last-child{margin-bottom:0}
-
-  .principles{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px}
-  .principles li{
-    padding:12px 16px; background:var(--info-bg); border-left:3px solid var(--info);
-    border-radius:0 8px 8px 0; font-size:.95rem;
-  }
-  .principles strong{color:var(--navy)}
-
-  /* ---------- Inline figures ---------- */
-  .about-row{display:grid; grid-template-columns:1.35fr 1fr; gap:24px; align-items:start}
-  .about-row figure{margin:2px 0 0}
-  .about-row img{width:100%; height:auto; display:block; border-radius:10px; border:1px solid var(--line); box-shadow:var(--shadow)}
-  .about-row figcaption{font-size:.82rem; color:var(--muted); margin-top:8px; line-height:1.5}
-
-  /* ---------- Document cards ---------- */
-  .doc-grid{
-    display:grid; gap:18px; margin:0; padding:0; list-style:none;
-    grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
-  }
-  .doc-card{
-    position:relative; display:flex; flex-direction:column;
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px 22px 20px; transition:box-shadow .18s ease, border-color .18s ease, transform .18s ease;
-  }
-  .doc-card:hover{box-shadow:var(--shadow-lift); border-color:#c2d3e2; transform:translateY(-2px)}
-  /* The whole card is the click target, but only the <a> is in the tab order,
-     so keyboard and pointer users get the same affordance without duplicate stops. */
-  .doc-card:focus-within{box-shadow:var(--shadow-lift); border-color:var(--teal)}
-  .doc-card h3{font-size:1.1rem; margin:0 0 .45em}
-  .doc-card h3 a{color:var(--navy); text-decoration:none}
-  .doc-card h3 a::after{content:""; position:absolute; inset:0; border-radius:var(--radius)}
-  .doc-card h3 a:hover{text-decoration:underline}
-  .doc-card p{font-size:.92rem; color:var(--body); margin:0 0 14px}
-  .doc-card .thumb{margin:-22px -22px 16px; border-radius:var(--radius) var(--radius) 0 0; overflow:hidden; border-bottom:1px solid var(--line2)}
-  .doc-card .thumb img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover}
-  .doc-card .tag{
-    align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em;
-    text-transform:uppercase; color:#fff; background:var(--teal);
-    padding:3px 9px; border-radius:999px; margin-bottom:12px;
-  }
-  .doc-card .foot{
-    margin-top:auto; padding-top:12px; border-top:1px solid var(--line2);
-    font-size:.8rem; color:var(--muted); display:flex; justify-content:space-between; gap:10px;
-  }
-  .doc-card .open{color:var(--river); font-weight:600}
-
-  /* ---------- Illustration gallery ---------- */
-  .art-note{font-size:.88rem; color:var(--muted); margin:-6px 0 18px}
-  .art-grid{list-style:none; margin:0; padding:0; display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-  .art-grid figure{margin:0}
-  .art-grid a.art{display:block; border-radius:10px}
-  .art-grid img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:10px; border:1px solid var(--line); box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease}
-  .art-grid a.art:hover img{transform:translateY(-2px); box-shadow:var(--shadow-lift)}
-  .art-grid figcaption{font-size:.84rem; color:var(--muted); margin-top:8px; line-height:1.45}
-
-  /* CSS-only lightbox — keeps script-src 'none' intact */
-  .lightbox{position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center; padding:26px; background:rgba(7,18,36,.90)}
-  .lightbox:target{display:flex}
-  .lightbox .lb-bg{position:absolute; inset:0}
-  .lightbox figure{position:relative; margin:0; max-width:min(1080px,94vw)}
-  .lightbox img{display:block; width:100%; height:auto; max-height:82vh; object-fit:contain; border-radius:12px; box-shadow:0 22px 70px rgba(0,0,0,.55)}
-  .lightbox figcaption{color:#cfe0ea; font-size:.9rem; text-align:center; margin-top:12px}
-  .lightbox .lb-close{position:absolute; top:-46px; right:-6px; color:#fff; font-size:2rem; line-height:1; text-decoration:none; padding:6px 10px}
-  .lightbox .lb-prev,.lightbox .lb-next{position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2.6rem; line-height:1; text-decoration:none; padding:10px 14px; opacity:.85}
-  .lightbox .lb-prev{left:-58px} .lightbox .lb-next{right:-58px}
-  .lightbox .lb-prev:hover,.lightbox .lb-next:hover,.lightbox .lb-close:hover{opacity:1; text-decoration:none}
-  @media (max-width:900px){
-    .lightbox .lb-prev{left:6px} .lightbox .lb-next{right:6px}
-    .lightbox .lb-close{top:-44px; right:2px}
-  }
-
-  /* ---------- Footer ---------- */
-  footer.site{
-    background:var(--navy); color:#c3d4e0; padding:34px 0 38px; font-size:.88rem;
-  }
-  footer.site .wrap>p{margin:0 0 .7em; max-width:80ch}
-  footer.site strong{color:#fff; font-weight:600}
-  footer.site a{color:#9ec7dd}
-  footer.site .rule{height:1px; background:rgba(255,255,255,.14); margin:16px 0}
-
-  @media (max-width:760px){
-    .about-row{grid-template-columns:1fr}
-  }
-  @media (max-width:640px){
-    header.hero{padding:48px 0 42px}
-    header.hero h1{font-size:1.75rem}
-    header.hero .mission{font-size:1rem}
-    section{padding:22px 20px}
-    section>h2{font-size:1.3rem}
-    .doc-grid{grid-template-columns:1fr}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .doc-card,.art-grid img{transition:none}
-    .doc-card:hover{transform:none}
-    .art-grid a.art:hover img{transform:none}
-  }
-</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Cpath d='M4 20c4-3 6 3 10 0s6 3 10 0' stroke='%232a6f97' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 25c4-3 6 3 10 0s6 3 10 0' stroke='%230f6f7a' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
 
-<a class="skip" href="#documents">Skip to documents</a>
+<a class="skip" href="#evidence">Skip to the evidence</a>
+
+<nav class="topnav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#13315c"/><path d="M4 20c4-3 6 3 10 0s6 3 10 0" stroke="#2a6f97" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M4 25c4-3 6 3 10 0s6 3 10 0" stroke="#0f6f7a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      Thames Evidence Programme
+    </a>
+    <div class="navlinks">
+      <a href="/#evidence">Evidence</a>
+      <a href="/why-it-matters.html">Why it matters / In the news</a>
+    </div>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap">
-    <img class="mark" src="/images/brand/logo-mark.svg" alt="" width="56" height="56">
     <p class="eyebrow">Evidence-led representation · Teddington · Ham · Kingston · Richmond · Petersham</p>
     <h1>River Thames Evidence &amp; Representation Programme</h1>
-    <p class="mission">
+    <p class="standfirst">
       A structured, source-referenced case on the ecological health, water quality, public use and
       official monitoring of the River Thames between Teddington Weir and Richmond — and what needs
       to be done about it. Every figure published here carries a citation to its original source,
@@ -232,270 +56,151 @@
         a single stretch of the tidal and freshwater Thames. It is not a campaign site and it does
         not ask you to accept a conclusion.
       </p>
-      <div class="about-row">
-        <p>
-          The purpose is narrow and practical: to assemble what is actually known about this reach of
-          the river from official monitoring, published datasets and public records; to identify
-          clearly where that evidence is thin, contested or absent; and to set out proportionate asks
-          of the bodies that hold statutory responsibility for it. The documents below are working
-          documents. They are versioned, dated, and revised as new information is obtained.
-        </p>
-        <figure>
-          <picture>
-            <source type="image/webp" srcset="/images/web/river-thames-community-stakeholders-map-800.webp 800w, /images/web/river-thames-community-stakeholders-map-1600.webp 1600w" sizes="(max-width:760px) 92vw, 420px">
-            <img src="/images/web/river-thames-community-stakeholders-map-800.jpg" width="800" height="450" loading="lazy"
-                 alt="Illustration of six people gathered around a large map of the river spread on a table at the water's edge, discussing and taking notes.">
-          </picture>
-          <figcaption>One map, every stakeholder — residents, regulators and representatives working from the same evidence.</figcaption>
-        </figure>
-      </div>
+      <p>
+        The purpose is narrow and practical: to assemble what is actually known about this reach of
+        the river from official monitoring, published datasets and public records; to identify
+        clearly where that evidence is thin, contested or absent; and to set out proportionate asks
+        of the bodies that hold statutory responsibility for it. The material below is organised into
+        two zones — the <a href="#evidence">evidence base</a> itself, and
+        <a href="/why-it-matters.html">why it matters</a> in the wider national picture. Everything is
+        versioned, dated, and revised as new information is obtained.
+      </p>
       <ul class="principles">
-        <li><strong>Sourced.</strong> Figures and claims are referenced to the dataset, publication or public record they came from.</li>
+        <li><strong>Sourced.</strong> Figures and claims are referenced to the dataset, publication or public record they came from, with a provenance tag.</li>
         <li><strong>Provisional.</strong> Material is published at working-draft stage and marked with its version and date, not held back until it is final.</li>
         <li><strong>Corrigible.</strong> Where a body identifies an error in this evidence, the correction is made and recorded.</li>
       </ul>
     </section>
 
-    <section id="documents" aria-labelledby="documents-h">
-      <h2 id="documents-h">Documents &amp; evidence</h2>
+    <section id="evidence" aria-labelledby="evidence-h">
+      <p class="kicker">Zone 1 · The evidence base</p>
+      <h2 id="evidence-h">Evidence</h2>
       <p>
-        Each document below is a self-contained page. They are provided for public and stakeholder
-        review and may be read, cited and shared freely.
+        Eight self-contained evidence pages, each built directly from primary data and every figure
+        tagged with its provenance — <strong>RAW-PULL</strong> (data we downloaded and parsed),
+        <strong>PUBLISHED</strong> (quoted from an official source), <strong>DERIVED</strong>
+        (our inference from a stated rule) or <strong>ACCESS-BLOCKED</strong> (public in a browser
+        but unreachable by automation). Read, cite and share them freely.
       </p>
 
       <ul class="doc-grid">
 
-        <!-- ===================================================================
-             TO ADD A DOCUMENT:
-             1. Drop your .html file into /docs
-             2. Copy one <li class="doc-card"> block below and edit the five
-                parts marked ⓪①②③④. The thumbnail ⓪ is optional — delete the
-                <div class="thumb"> block for a text-only card.
-             ================================================================ -->
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/water-quality.html">Water quality</a></h3>
+          <p>
+            Dissolved oxygen, ammonia, phosphate, nutrients and temperature at Teddington Weir
+            (freshwater) and Richmond (tidal) — 2,432 observations from the EA Water Quality Archive.
+            Oxygenated but eutrophic above the weir; fish-stress oxygen sags below Mogden.
+          </p>
+          <p class="foot"><span>Working page · RAW-PULL</span><span class="open">Open →</span></p>
+        </li>
 
         <li class="doc-card">
-          <!-- ⓪ thumbnail (optional) -->
-          <div class="thumb">
-            <picture>
-              <source type="image/webp" srcset="/images/web/river-thames-evidence-programme-roadmap-800.webp">
-              <img src="/images/web/river-thames-evidence-programme-roadmap-800.jpg" width="800" height="450" loading="lazy" alt="">
-            </picture>
-          </div>
-          <span class="tag">Dashboard</span>
-          <!-- ① link + ② title -->
-          <h3><a href="/docs/River-Thames-Programme-Dashboard.html">Programme Dashboard</a></h3>
-          <!-- ③ description -->
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/sewage-mogden.html">Sewage &amp; storm overflows</a></h3>
           <p>
-            The master working document: the evidence base, the programme of work, accountability
-            of the water undertaker, which bodies hold which data, stakeholder mapping, the
-            correspondence tracker, identified evidence gaps and the full source list.
+            Mogden sewage works (permit CNTD.0085): storm-tank discharge hours and counted spills to
+            the tidal Thames, 2020–2025. 2024 was the worst year on record — 471.7 hours across 50
+            spills. Duration only; no volume is published anywhere.
           </p>
-          <!-- ④ status / date -->
-          <p class="foot"><span>Working document · v1 · 28 July 2026</span><span class="open">Open →</span></p>
+          <p class="foot"><span>Working page · RAW-PULL</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/wfd-status.html">WFD status &amp; compliance</a></h3>
+          <p>
+            Water Framework Directive classifications for the river and tidal bodies: below "good"
+            for three cycles, sewage discharge named as a reason on both, and the chemical objective
+            relaxed to 2063 citing "disproportionate burdens".
+          </p>
+          <p class="foot"><span>Working page · RAW-PULL</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/fish.html">Fish &amp; aquatic ecology</a></h3>
+          <p>
+            A 32-year Richmond seine-net series, the collapse of the Critically Endangered European
+            eel (12 in 1993 to none after 2019), and an honest audit of how thin the mainstem
+            ecological evidence really is.
+          </p>
+          <p class="foot"><span>Working page · RAW-PULL</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/birds-biodiversity.html">Birds &amp; biodiversity</a></h3>
+          <p>
+            142,070 NBN Atlas records: 19,469 waterbird records across 23 species, indicator species
+            (eel, smelt, quagga mussel) and the effort-versus-population caveat that means these
+            counts are context, not proof of cause.
+          </p>
+          <p class="foot"><span>Working page · RAW-PULL</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/bathing.html">Bathing water</a></h3>
+          <p>
+            England's first designated <em>river</em> bathing water at Ham &amp; Kingston
+            (designated 15 May 2026): the E. coli and intestinal enterococci samples now coming in,
+            and why no formal "safe to swim" classification is due until about 2029.
+          </p>
+          <p class="foot"><span>Working page · PUBLISHED</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Evidence</span>
+          <h3><a href="/docs/accountability.html">Accountability &amp; context</a></h3>
+          <p>
+            The regulatory record: Ofwat's record £122.7m penalty (May 2025), 523 pollution
+            incidents and a bottom 1-star rating in 2024, and ZSL's long-term State of the Thames
+            temperature and oxygen trends. Fines proven; charges kept distinct from convictions.
+          </p>
+          <p class="foot"><span>Working page · PUBLISHED</span><span class="open">Open →</span></p>
+        </li>
+
+        <li class="doc-card">
+          <span class="tag">Interactive</span>
+          <h3><a href="/docs/correlations.html">Cross-correlations</a></h3>
+          <p>
+            The interactive flagship: where the strands meet — storm spills, dissolved oxygen,
+            season and ecology — shown together, with correlation held carefully apart from
+            causation and every asserted link flagged as such.
+          </p>
+          <p class="foot"><span>Interactive · mixed provenance</span><span class="open">Open →</span></p>
         </li>
 
       </ul>
     </section>
 
-    <section id="gallery" aria-labelledby="gallery-h">
-      <h2 id="gallery-h">The programme, illustrated</h2>
-      <p class="lede">
-        Seven illustrations commissioned for the programme give its working themes a shared visual
-        language — monitoring, public records, oversight of the treatment works, who holds the data,
-        the correspondence trail, and the people this river serves.
+    <section id="why" aria-labelledby="why-h">
+      <p class="kicker">Zone 2 · The wider picture</p>
+      <h2 id="why-h">Why it matters / In the news</h2>
+      <p>
+        The reach does not sit in isolation. A five-year sweep of 88 catalogued news items — from
+        Thames Water's finances and record penalties to the Water (Special Measures) Act 2025 and the
+        local Teddington abstraction saga — sets out why this evidence matters and what is at stake
+        for the river and the people who use it. Legal status is stated with care: "charged" and
+        "alleged" are never presented as "convicted"; regulatory fines are kept distinct from criminal
+        convictions.
       </p>
-      <p class="art-note">
-        These are illustrative artworks created for this site (AI-assisted). They are not photographs
-        and they are not evidence. Select any image to view it full size.
-      </p>
-      <ul class="art-grid">
-        <li>
-          <figure>
-            <a class="art" href="#lb-1" aria-label="View full size: monitoring the reach">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-water-quality-monitoring-teddington-800.webp 800w, /images/web/river-thames-water-quality-monitoring-teddington-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-water-quality-monitoring-teddington-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a scientist crouching at the river's edge taking a water sample, with a grey heron nearby, a bridge and riverside buildings beyond, and monitoring charts overlaid on the sky.">
-              </picture>
-            </a>
-            <figcaption>Monitoring the reach — sampling, observation and record-keeping on the bank.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-2" aria-label="View full size: the programme of work">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-evidence-programme-roadmap-800.webp 800w, /images/web/river-thames-evidence-programme-roadmap-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-evidence-programme-roadmap-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a staged roadmap winding across a river scene, with icons for searching records, data files, checklists, charts, meetings and published reports.">
-              </picture>
-            </a>
-            <figcaption>The programme of work, staged along the river — from records search to reporting.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-3" aria-label="View full size: built from public records">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-water-quality-public-records-800.webp 800w, /images/web/river-thames-water-quality-public-records-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-water-quality-public-records-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a desk of public records beside the river: stacked environmental reports, a clipboard of sampling notes, maps of the river and reference books of monitoring data.">
-              </picture>
-            </a>
-            <figcaption>Built from public records — official reports, monitoring data, permits and sampling logs.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-4" aria-label="View full size: the treatment works question">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-sewage-treatment-works-oversight-800.webp 800w, /images/web/river-thames-sewage-treatment-works-oversight-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-sewage-treatment-works-oversight-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a sewage treatment works beside the river, with an engineer recording readings on a tablet and officials meeting at a table on the bank.">
-              </picture>
-            </a>
-            <figcaption>The treatment works question — infrastructure, discharges, and who answers for them.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-5" aria-label="View full size: who holds the data">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-environmental-data-holders-800.webp 800w, /images/web/river-thames-environmental-data-holders-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-environmental-data-holders-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a diagram over the river connecting the bodies that hold river data — regulators, local authorities, public bodies, water company records, environmental monitoring and citizen science — to a central database.">
-              </picture>
-            </a>
-            <figcaption>Who holds the data — regulators, councils, the water company, monitoring schemes and citizen science.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-6" aria-label="View full size: one map, every stakeholder">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-community-stakeholders-map-800.webp 800w, /images/web/river-thames-community-stakeholders-map-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-community-stakeholders-map-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of residents and river users gathered around a large map of the river at the water's edge.">
-              </picture>
-            </a>
-            <figcaption>One map, every stakeholder — residents, river users and representatives around the same evidence.</figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <a class="art" href="#lb-7" aria-label="View full size: the correspondence trail">
-              <picture>
-                <source type="image/webp" srcset="/images/web/river-thames-correspondence-tracker-800.webp 800w, /images/web/river-thames-correspondence-tracker-1600.webp 1600w" sizes="(max-width:640px) 92vw, (max-width:1120px) 45vw, 350px">
-                <img src="/images/web/river-thames-correspondence-tracker-800.jpg" width="800" height="450" loading="lazy"
-                     alt="Illustration of a correspondence workflow beside the river: letter trays marked incoming, sent and archive, a handwritten log of dates, envelopes and a tablet showing a tracked thread.">
-              </picture>
-            </a>
-            <figcaption>The correspondence trail — every request, acknowledgement and response, tracked.</figcaption>
-          </figure>
+
+      <ul class="doc-grid">
+        <li class="doc-card">
+          <span class="tag news">News</span>
+          <h3><a href="/why-it-matters.html">Why it matters / In the news</a></h3>
+          <p>
+            The national and local context in one place: the biggest stories of the last five years,
+            the regulatory reforms now under way, and how the Teddington-to-Richmond reach fits the
+            wider story of water in England.
+          </p>
+          <p class="foot"><span>Awareness zone · 88 sourced items</span><span class="open">Open →</span></p>
         </li>
       </ul>
     </section>
-
-    <!-- Full-size viewers for the gallery. CSS-only (:target), so the site's
-         script-src 'none' policy stays exactly as it is. -->
-    <div class="lightbox" id="lb-1" role="dialog" aria-label="Full-size illustration 1 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-water-quality-monitoring-teddington-1600.webp">
-          <img src="/images/web/river-thames-water-quality-monitoring-teddington-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of a scientist taking a water sample at the river's edge, with a grey heron, a bridge and riverside buildings, and monitoring charts overlaid.">
-        </picture>
-        <figcaption>Monitoring the reach — sampling, observation and record-keeping on the bank. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-7" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-2" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-2" role="dialog" aria-label="Full-size illustration 2 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-evidence-programme-roadmap-1600.webp">
-          <img src="/images/web/river-thames-evidence-programme-roadmap-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of a staged roadmap winding across a river scene with icons for records, checks, charts, meetings and reports.">
-        </picture>
-        <figcaption>The programme of work, staged along the river. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-1" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-3" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-3" role="dialog" aria-label="Full-size illustration 3 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-water-quality-public-records-1600.webp">
-          <img src="/images/web/river-thames-water-quality-public-records-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of a desk of public records beside the river — reports, sampling notes, maps and reference books.">
-        </picture>
-        <figcaption>Built from public records. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-2" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-4" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-4" role="dialog" aria-label="Full-size illustration 4 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-sewage-treatment-works-oversight-1600.webp">
-          <img src="/images/web/river-thames-sewage-treatment-works-oversight-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of a sewage treatment works beside the river with an engineer recording readings and officials meeting on the bank.">
-        </picture>
-        <figcaption>The treatment works question. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-3" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-5" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-5" role="dialog" aria-label="Full-size illustration 5 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-environmental-data-holders-1600.webp">
-          <img src="/images/web/river-thames-environmental-data-holders-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration connecting the bodies that hold river data — regulators, local authorities, public bodies, the water company, monitoring and citizen science — to a central database.">
-        </picture>
-        <figcaption>Who holds the data. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-4" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-6" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-6" role="dialog" aria-label="Full-size illustration 6 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-community-stakeholders-map-1600.webp">
-          <img src="/images/web/river-thames-community-stakeholders-map-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of residents and river users gathered around a large map of the river at the water's edge.">
-        </picture>
-        <figcaption>One map, every stakeholder. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-5" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-7" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
-    <div class="lightbox" id="lb-7" role="dialog" aria-label="Full-size illustration 7 of 7">
-      <a class="lb-bg" href="#gallery" aria-hidden="true" tabindex="-1"></a>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="/images/web/river-thames-correspondence-tracker-1600.webp">
-          <img src="/images/web/river-thames-correspondence-tracker-1600.jpg" width="1600" height="900" loading="lazy"
-               alt="Illustration of a correspondence workflow beside the river — letter trays, a handwritten log of dates, envelopes and a tablet showing a tracked thread.">
-        </picture>
-        <figcaption>The correspondence trail. Programme illustration.</figcaption>
-        <a class="lb-close" href="#gallery" aria-label="Close full-size view">×</a>
-        <a class="lb-prev" href="#lb-6" aria-label="Previous illustration">‹</a>
-        <a class="lb-next" href="#lb-1" aria-label="Next illustration">›</a>
-      </figure>
-    </div>
 
   </div>
 </main>
@@ -504,10 +209,9 @@
   <div class="wrap">
     <p><strong>Independent evidence programme — River Thames, Teddington to Richmond</strong></p>
     <p>
-      Documents on this site are provided for public and stakeholder review. They are working
-      documents: they carry their own version number and date, and are revised as further
-      information is obtained. Where an error is identified, it is corrected and the correction
-      recorded.
+      Pages on this site are provided for public and stakeholder review. They are working documents:
+      they carry their own provenance tags and date, and are revised as further information is
+      obtained. Where an error is identified, it is corrected and the correction recorded.
     </p>
     <div class="rule"></div>
     <p>Last updated: <time datetime="2026-07-31">31 July 2026</time></p>
