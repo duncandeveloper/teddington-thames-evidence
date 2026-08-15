@@ -1,0 +1,24 @@
+# --- Correspondence and source material: never publish -----------------------
+# This repository is PUBLIC. The parent folder holds FOI/EIR correspondence.
+# These patterns are a second line of defence only — the real protection is that
+# those files live OUTSIDE this repository, one level up. Keep it that way.
+*.eml
+*.msg
+*.pst
+*.ost
+/correspondence/
+/private/
+
+# --- OS / editor -------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# --- OneDrive conflict copies ------------------------------------------------
+*-Copy.html
+*conflicted copy*
