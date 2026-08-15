@@ -29,13 +29,33 @@
 
 <nav class="topnav" aria-label="Primary">
   <div class="wrap">
-    <a class="brand" href="/">
-      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#13315c"/><path d="M4 20c4-3 6 3 10 0s6 3 10 0" stroke="#2a6f97" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M4 25c4-3 6 3 10 0s6 3 10 0" stroke="#0f6f7a" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
-      Thames Evidence Programme
-    </a>
-    <div class="navlinks">
-      <a href="/#evidence" aria-current="page">Evidence</a>
-      <a href="/why-it-matters.html">Why it matters / In the news</a>
+    <a class="brand" href="/"><span>Thames Evidence Programme</span></a>
+
+    <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Show and hide the main menu">
+    <span class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></span>
+
+    <div class="navpanel">
+      <ul class="navlist">
+        <li class="has-menu">
+          <a href="/#evidence" aria-current="page">Evidence<i class="caret"></i></a>
+          <div class="submenu">
+            <p class="submenu-h">The river</p>
+            <a href="/docs/water-quality.html">Water quality</a>
+            <a href="/docs/sewage-mogden.html">Sewage &amp; storm overflows</a>
+            <a href="/docs/wfd-status.html">WFD status &amp; compliance</a>
+            <a href="/docs/bathing.html">Bathing water</a>
+            <p class="submenu-h">Wildlife</p>
+            <a href="/docs/fish.html">Fish &amp; aquatic ecology</a>
+            <a href="/docs/birds-biodiversity.html">Birds &amp; biodiversity</a>
+            <p class="submenu-h">Analysis</p>
+            <a href="/docs/accountability.html" aria-current="page">Accountability &amp; context</a>
+            <a href="/docs/correlations.html">Cross-correlations</a>
+          </div>
+        </li>
+        <li><a href="/why-it-matters.html">Why it matters</a></li>
+        <li><a href="/docs/River-Thames-Programme-Dashboard.html">Dashboard</a></li>
+        <li><a href="/#about">About</a></li>
+      </ul>
     </div>
   </div>
 </nav>
