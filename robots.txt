@@ -1,1 +1,4 @@
-User-agent: *\nAllow: /\n\nSitemap: https://jolly-flower-06c523503.7.azurestaticapps.net/sitemap.xml\n
+User-agent: *
+Allow: /
+
+Sitemap: https://thamesevidence.org.uk/sitemap.xml

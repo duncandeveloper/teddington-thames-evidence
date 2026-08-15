@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img"
+     aria-label="Stylised illustration of newspaper pages and headlines above the river">
+  <defs>
+    <linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2545"/><stop offset=".58" stop-color="#13315c"/><stop offset="1" stop-color="#0b565f"/>
+    </linearGradient>
+    <linearGradient id="nw1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#58a4d3"/><stop offset="1" stop-color="#2a6f97"/>
+    </linearGradient>
+    <linearGradient id="nw2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35a3ad"/><stop offset="1" stop-color="#0f6f7a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#nbg)"/>
+  <circle cx="676" cy="78" r="38" fill="#8fb8c9" opacity=".22"/>
+
+  <!-- back sheet -->
+  <g transform="rotate(-7 300 210)" opacity=".38">
+    <rect x="196" y="112" width="230" height="196" rx="8" fill="#cfe0ea"/>
+  </g>
+  <!-- middle sheet -->
+  <g transform="rotate(4 380 214)" opacity=".62">
+    <rect x="286" y="106" width="230" height="200" rx="8" fill="#e8f1f8"/>
+  </g>
+
+  <!-- front sheet with masthead and columns -->
+  <g transform="rotate(-2 330 220)">
+    <rect x="232" y="120" width="252" height="204" rx="9" fill="#ffffff" opacity=".96"/>
+    <rect x="252" y="142" width="132" height="13" rx="4" fill="#0b2545" opacity=".82"/>
+    <rect x="252" y="168" width="212" height="9" rx="4" fill="#2a6f97" opacity=".55"/>
+    <rect x="252" y="186" width="176" height="9" rx="4" fill="#2a6f97" opacity=".40"/>
+    <g fill="#5c6b78" opacity=".38">
+      <rect x="252" y="214" width="96" height="6" rx="3"/>
+      <rect x="252" y="228" width="96" height="6" rx="3"/>
+      <rect x="252" y="242" width="96" height="6" rx="3"/>
+      <rect x="252" y="256" width="72" height="6" rx="3"/>
+      <rect x="252" y="284" width="96" height="6" rx="3"/>
+      <rect x="252" y="298" width="60" height="6" rx="3"/>
+    </g>
+    <rect x="368" y="212" width="96" height="62" rx="5" fill="#0f6f7a" opacity=".30"/>
+    <g fill="#5c6b78" opacity=".38">
+      <rect x="368" y="286" width="96" height="6" rx="3"/>
+      <rect x="368" y="300" width="70" height="6" rx="3"/>
+    </g>
+  </g>
+
+  <!-- headline pins over the reach -->
+  <g opacity=".72">
+    <circle cx="596" cy="176" r="9" fill="#ffffff"/>
+    <circle cx="656" cy="228" r="7" fill="#8fb8c9"/>
+    <circle cx="560" cy="252" r="6" fill="#8fb8c9"/>
+    <path d="M596 176 L656 228 M656 228 L560 252" stroke="#ffffff" stroke-width="2" opacity=".38" fill="none" stroke-dasharray="5 5"/>
+  </g>
+
+  <path d="M0 356 Q100 330 200 356 T400 356 T600 356 T800 356" fill="none" stroke="url(#nw1)" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <path d="M0 388 Q100 362 200 388 T400 388 T600 388 T800 388" fill="none" stroke="url(#nw2)" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <path d="M0 420 Q100 394 200 420 T400 420 T600 420 T800 420" fill="none" stroke="url(#nw1)" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+</svg>

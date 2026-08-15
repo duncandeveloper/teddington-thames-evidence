@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img"
+     aria-label="Stylised illustration of an open-water swimmer beside a sampling marker buoy">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2545"/><stop offset=".58" stop-color="#13315c"/><stop offset="1" stop-color="#0b565f"/>
+    </linearGradient>
+    <linearGradient id="sw1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#58a4d3"/><stop offset="1" stop-color="#2a6f97"/>
+    </linearGradient>
+    <linearGradient id="sw2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35a3ad"/><stop offset="1" stop-color="#0f6f7a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#sbg)"/>
+  <circle cx="666" cy="82" r="40" fill="#8fb8c9" opacity=".22"/>
+
+  <!-- sampling marker buoy: bathing waters are monitored, not yet classified -->
+  <g opacity=".8">
+    <path d="M596 268 l26 0 l-6 -74 l-14 0 z" fill="#cfe0ea"/>
+    <circle cx="609" cy="186" r="15" fill="#ffffff"/>
+    <path d="M604 186 h10 M609 181 v10" stroke="#0b2545" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- swimmer: front crawl at the surface, leading arm recovering -->
+  <g opacity=".95" fill="none" stroke="#ffffff" stroke-linecap="round">
+    <!-- trailing legs -->
+    <path d="M150 336 C182 330 200 322 226 318" stroke-width="15"/>
+    <path d="M158 356 C190 352 206 342 228 334" stroke-width="12" opacity=".8"/>
+    <!-- torso -->
+    <path d="M226 318 C282 306 330 302 372 306" stroke-width="24"/>
+    <!-- recovering arm, elbow high -->
+    <path d="M334 304 C324 250 366 220 412 236" stroke-width="15"/>
+  </g>
+  <!-- hand and head -->
+  <path d="M412 236 l26 -6 l-8 14 l12 12 l-28 -2 z" fill="#ffffff" opacity=".95"/>
+  <circle cx="392" cy="300" r="20" fill="#ffffff" opacity=".95"/>
+
+  <!-- bow wave and splash -->
+  <g fill="none" stroke="#cfe0ea" stroke-width="5" stroke-linecap="round" opacity=".55">
+    <path d="M414 322 q26 -12 50 -2"/>
+    <path d="M126 316 q24 -14 48 -4"/>
+    <path d="M118 344 q28 -14 56 -4"/>
+  </g>
+  <g fill="#ffffff" opacity=".45">
+    <circle cx="140" cy="300" r="5"/><circle cx="172" cy="288" r="3.6"/><circle cx="204" cy="296" r="3"/>
+  </g>
+
+  <path d="M0 356 Q100 330 200 356 T400 356 T600 356 T800 356" fill="none" stroke="url(#sw1)" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <path d="M0 388 Q100 362 200 388 T400 388 T600 388 T800 388" fill="none" stroke="url(#sw2)" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <path d="M0 420 Q100 394 200 420 T400 420 T600 420 T800 420" fill="none" stroke="url(#sw1)" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+</svg>

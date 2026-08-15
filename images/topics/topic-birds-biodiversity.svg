@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img"
+     aria-label="Stylised illustration of a grey heron standing among reeds at the water's edge">
+  <defs>
+    <linearGradient id="bbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2545"/><stop offset=".58" stop-color="#13315c"/><stop offset="1" stop-color="#0b565f"/>
+    </linearGradient>
+    <linearGradient id="bw1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#58a4d3"/><stop offset="1" stop-color="#2a6f97"/>
+    </linearGradient>
+    <linearGradient id="bw2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35a3ad"/><stop offset="1" stop-color="#0f6f7a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bbg)"/>
+  <circle cx="648" cy="96" r="46" fill="#8fb8c9" opacity=".24"/>
+
+  <!-- distant birds -->
+  <g fill="none" stroke="#cfe0ea" stroke-width="3.4" stroke-linecap="round" opacity=".40">
+    <path d="M120 96 q16 -13 32 0 M152 96 q16 -13 32 0"/>
+    <path d="M212 142 q12 -10 24 0 M236 142 q12 -10 24 0"/>
+  </g>
+
+  <!-- heron, drawn in the same language as the site mark -->
+  <g transform="translate(64,91) scale(4.6)" stroke-linecap="round">
+    <path d="M47.5 53.5 V63.5 M53.5 53 V63.5" fill="none" stroke="#ffffff" stroke-width="2.4" opacity=".92"/>
+    <path d="M36.5 49.5 Q39 41.5 48 39.5 Q56.5 37.8 60 43 Q62.8 47.5 57.5 51.5 Q50.5 56.5 43 54.5 Q37.5 53 36.5 49.5 Z"
+          fill="#ffffff" opacity=".95"/>
+    <path d="M56 43.5 C52.5 37.5 55.5 29.5 62.5 27.2" fill="none" stroke="#ffffff" stroke-width="5" opacity=".95"/>
+    <circle cx="65.5" cy="26.6" r="3.7" fill="#ffffff" opacity=".95"/>
+    <path d="M68.3 25 L80.5 22.6 L68.6 28.9 Z" fill="#ffffff" opacity=".95"/>
+  </g>
+
+  <!-- reeds -->
+  <g fill="none" stroke="#0f6f7a" stroke-width="7" stroke-linecap="round" opacity=".62">
+    <path d="M556 440 q10 -84 -8 -122"/>
+    <path d="M592 440 q-4 -70 10 -100"/>
+    <path d="M690 440 q10 -76 -6 -110"/>
+    <path d="M724 440 q-4 -64 10 -92"/>
+  </g>
+  <g fill="#0f6f7a" opacity=".62">
+    <ellipse cx="548" cy="312" rx="6" ry="17"/>
+    <ellipse cx="602" cy="336" rx="6" ry="16"/>
+    <ellipse cx="684" cy="326" rx="6" ry="16"/>
+  </g>
+
+  <path d="M0 392 Q100 366 200 392 T400 392 T600 392 T800 392" fill="none" stroke="url(#bw1)" stroke-width="9" stroke-linecap="round" opacity=".78"/>
+  <path d="M0 418 Q100 392 200 418 T400 418 T600 418 T800 418" fill="none" stroke="url(#bw2)" stroke-width="9" stroke-linecap="round" opacity=".78"/>
+</svg>

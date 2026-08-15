@@ -3,7 +3,8 @@
 Static public website for an independent, source-referenced evidence programme on the
 River Thames between Teddington Weir and Richmond.
 
-**Live site:** <https://jolly-flower-06c523503.7.azurestaticapps.net>
+**Live site:** <https://thamesevidence.org.uk>
+**Azure default host:** <https://jolly-flower-06c523503.7.azurestaticapps.net>
 
 | | |
 |---|---|
@@ -46,10 +47,12 @@ are not.
 ├── site.webmanifest            Web app manifest.
 ├── robots.txt                  Crawl policy + pointer to the sitemap.
 ├── sitemap.xml                 Page list for search engines (see SEO section).
+├── IMAGE-BRIEF.md              Commissioning brief for new artwork: style, sizes, prompts.
 ├── .gitignore
 ├── images/
 │   ├── originals/              Full-resolution source illustrations (PNG).
 │   ├── web/                    Optimised derivatives the pages serve (WebP + JPEG, 1600w and 800w).
+│   ├── topics/                 Drawn SVG topic plates (placeholders where no photo-illustration exists yet).
 │   └── brand/                  Logo mark, horizontal lockup, social-share image.
 └── docs/
     └── River-Thames-Programme-Dashboard.html
@@ -73,6 +76,18 @@ with a `<picture>` block — WebP `<source>` plus JPEG `<img>` fallback — with
 explicit `width`/`height`, and honest alt text. The gallery and lightbox markup in
 `index.html` are the template to copy.
 
+**Hero artwork is wired in CSS, not HTML.** Each page's header carries
+`class="hero art hero--<topic>"`. The matching rule in `site.css` sets two custom properties:
+`--hero-art` (the image) and `--hero-veil` (the navy gradient laid over it). The veil is what
+holds text contrast, so if artwork is swapped the text stays readable. Two gotchas, both already
+hit once: the modifier rules must be written `header.hero.hero--x{...}` — a bare `.hero--x` loses
+on specificity to `header.hero` and silently falls back to the default image; and the drawn SVG
+plates in `images/topics/` are already navy, so they take a much lighter veil than a photograph.
+
+**Adding new artwork.** `IMAGE-BRIEF.md` holds the full commissioning brief — house style,
+dimensions, filenames and a ready-to-use prompt for every outstanding slot. Follow it rather than
+generating ad hoc, so the set stays coherent.
+
 **Honesty rule.** The seven current illustrations are AI-assisted artwork commissioned for the
 site. The gallery labels them as illustrations, and they must never be presented as photographs
 or evidence — anything presented as evidence gets a source, like every figure on this site.
@@ -83,14 +98,13 @@ tidal wave. `favicon.svg` / `favicon.ico` use a simplified waves-and-weir varian
 legible at 16 px. The full lockup is `images/brand/logo.svg`; the social-share card
 (`og:image`) is `images/brand/river-thames-evidence-programme-share.jpg`.
 
-**Search engines.** `sitemap.xml` lists the indexable pages; `robots.txt` points crawlers at
-it. The lightbox anchors (`#lb-1`…) are fragments, not pages, so they need no sitemap entries.
-When the custom domain goes live:
+**Search engines.** `sitemap.xml` lists all eleven indexable pages and `robots.txt` points
+crawlers at it. Both use the canonical custom domain `https://thamesevidence.org.uk`. Every page
+carries `<link rel="canonical">` and Open Graph tags.
 
-1. Search-and-replace the `jolly-flower…azurestaticapps.net` host in `sitemap.xml`,
-   `robots.txt`, `index.html` and the dashboard (the `og:` meta tags).
-2. Verify the domain in Google Search Console and submit `/sitemap.xml`.
-3. When adding a document, add a matching `<url>` entry to `sitemap.xml` with its `lastmod`.
+When you add a page, add a matching `<url>` entry to `sitemap.xml` with its `lastmod`, then
+resubmit the sitemap in Google Search Console.
+
 
 ---
 
