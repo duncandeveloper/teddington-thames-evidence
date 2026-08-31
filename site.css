@@ -554,3 +554,50 @@ header.hero .btn.ghost:hover{background:rgba(255,255,255,.19)}
   header.hero.art{background-image:none !important; background:var(--navy) !important}
   .doc-card .thumb{display:none}
 }
+
+
+/* ---------- Programme status board (index) ----------
+   A public view of what is done, in progress, not started, or waiting on a
+   third party. Status is encoded in the pill colour AND in its text, so it
+   survives greyscale printing and colour-blind readers.                     */
+.pstatus{list-style:none; margin:22px 0 0; padding:0; display:grid; gap:2px}
+.pstat{
+  display:grid; grid-template-columns:132px minmax(180px,1fr) 2fr;
+  gap:6px 18px; align-items:baseline;
+  padding:14px 16px; background:var(--card);
+  border:1px solid var(--line); border-bottom:none;
+}
+.pstat:first-child{border-radius:var(--radius) var(--radius) 0 0}
+.pstat:last-child{border-bottom:1px solid var(--line); border-radius:0 0 var(--radius) var(--radius)}
+.pstat-pill{
+  justify-self:start; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; padding:3px 9px; border-radius:999px;
+  border:1px solid currentColor; white-space:nowrap;
+}
+.pstat--live     .pstat-pill{color:#1d6b4f}
+.pstat--progress .pstat-pill{color:var(--teal)}
+.pstat--open     .pstat-pill{color:var(--muted)}
+.pstat--waiting  .pstat-pill{color:#8a5a0b}
+.pstat-name{font-weight:600; color:var(--navy)}
+.pstat-note{font-size:.92rem; color:var(--body)}
+@media (max-width:760px){
+  .pstat{grid-template-columns:1fr; gap:6px}
+  .pstat-pill{margin-bottom:2px}
+}
+
+/* ---------- Source organisations (index) ----------
+   House-drawn marks, not official logos: the OGL excludes departmental logos
+   and crests, and a real emblem on a page that scrutinises the body would
+   imply an endorsement nobody has given.                                    */
+.orgs{
+  list-style:none; margin:22px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px;
+}
+.org{
+  display:flex; gap:14px; align-items:flex-start;
+  background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+}
+.org-mark{width:48px; height:48px; flex:0 0 48px}
+.org h3{font-size:1rem; margin:0 0 4px}
+.org p{font-size:.88rem; color:var(--muted); margin:0}
