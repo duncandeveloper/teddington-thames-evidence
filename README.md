@@ -6,6 +6,13 @@ River Thames between Teddington Weir and Richmond.
 **Live site:** <https://thamesevidence.org.uk>
 **Azure default host:** <https://jolly-flower-06c523503.7.azurestaticapps.net>
 
+**How we work:** the programme's operating layer — charter, work-threads, ways of
+working, agent prompts, decision log, open questions — lives in the private companion
+repository `duncandeveloper/thames-evidence-programme`, cloned alongside this one.
+Start there at `ops/README.md`. Agents working in *this* repo start at
+[`CLAUDE.md`](CLAUDE.md).
+
+
 | | |
 |---|---|
 | Azure resource | `swa-teddington-thames-evidence` |

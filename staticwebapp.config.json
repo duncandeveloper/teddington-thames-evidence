@@ -3,6 +3,14 @@
 
   "routes": [
     {
+      "route": "/ops/*",
+      "statusCode": 404
+    },
+    {
+      "route": "/CLAUDE.md",
+      "statusCode": 404
+    },
+    {
       "route": "/",
       "rewrite": "/index.html"
     },
@@ -42,6 +50,7 @@
     ".webp": "image/webp",
     ".ico": "image/x-icon",
     ".xml": "application/xml",
-    ".txt": "text/plain; charset=utf-8"
+    ".txt": "text/plain; charset=utf-8",
+    ".md": "text/plain; charset=utf-8"
   }
 }
